@@ -87,3 +87,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Ignore compressed files
+*.tar.gz
+
+# Pycharm folder
+.idea
