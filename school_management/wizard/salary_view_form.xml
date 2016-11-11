@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="salary_form" model="ir.ui.view">
+            <field name="name">Make Salary</field>
+            <field name="model">salary</field>
+            <field name="arch" type="xml">
+                <form string="salary">
+                    <group>
+                        <field name="name"/>
+                        <field name="teacher_sal"/>
+                    </group>
+
+               </form>
+            </field>
+        </record>
+
+        <record id="action_salary" model="ir.actions.act_window">
+            <field name="name">Make Salary</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">salary</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="salary_form"/>
+            <field name="target">new</field>
+            <field name="multi">True</field>
+        </record>
+
+       <record model="ir.values" id="teacher_salary">
+            <field name="model_id" ref="model_teacher"/>
+            <field name="name">Make Salary</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_salary'))" />
+            <field name="key">action</field>
+            <field name="model">teacher</field>
+       </record>
+
+
+
+        <!--wizard view below-->
+
+
+         <!--<record id="action_wizard1" model="ir.actions.act_window">-->
+            <!--<field name="name">Test Wizards</field>-->
+            <!--<field name="res_model">salary</field>-->
+            <!--<field name="type">ir.actions.act_window</field>-->
+            <!--<field name="view_type">form</field>-->
+            <!--<field name="view_id" ref="salary_form"/>-->
+            <!--<field name="view_mode">form</field>-->
+            <!--<field name="target">new</field>-->
+       <!--</record>-->
+
+       <!--<menuitem id="menu_action_wizard_main" name="Wizard" parent="menu_teachers_records"/>-->
+       <!--<menuitem id="menu_action_wizard" name="Test Wizard" action="action_wizard1" parent="menu_action_wizard_main"/>-->
+
+    </data>
+</openerp>

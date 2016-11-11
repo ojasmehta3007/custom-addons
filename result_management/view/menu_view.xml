@@ -1,0 +1,21 @@
+<openerp>
+    <data>
+        <menuitem name="Result Management" id="menu_result_management"/>
+        <!--student menu-->
+        <menuitem name="Students" id="menu_students" parent="menu_result_management"/>
+        <menuitem name="Student Records " action='action_student_management' id="menu_students_records"
+                  parent="menu_students"/>
+        <!--subject menu-->
+        <menuitem name="Subjects" id="menu_subjects" parent="menu_result_management"/>
+        <menuitem name="Create/View Subjects" action='action_subject_management' id="menu_subject_records" parent="menu_subjects"/>
+        <!--marks menu-->
+        <menuitem name="Marks" id="menu_Marks" parent="menu_result_management"/>
+        <menuitem name="View Marks" action='action_marks_management' id="menu_view_marks"
+                  parent="menu_Marks"/>
+
+        <!--teacher menu-->
+        <menuitem name="Teachers" id="menu_teacher" parent="menu_result_management"/>
+        <menuitem name="Teacher Records " action='action_teacher_management' id="menu_teacher_records"
+                  parent="menu_teacher"/>
+    </data>
+</openerp>

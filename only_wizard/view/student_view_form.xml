@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_student_tree" model="ir.ui.view">
+            <field name="name">student.tree</field>
+            <field name="model">student</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="student">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_student_form" model="ir.ui.view">
+            <field name="name">student.form</field>
+            <field name="model">student</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="student">
+                    <sheet>
+                        <header>
+                            <button string="Result" type="object" name="show_result" />
+                        </header>
+                        <group>
+                            <field name="name" string="Student Name:"/>
+                            <field name="student_marks_rel"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_student_management" model="ir.actions.act_window">
+            <field name="name">student</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">student</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a students in Results Management
+                </p>
+                <p>
+                    Odoo will help you efficiently handle School Management.
+                </p>
+            </field>
+        </record>
+    </data>
+</openerp>

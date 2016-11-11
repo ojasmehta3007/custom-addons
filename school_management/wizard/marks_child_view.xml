@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+         <record id="wizard_child_view_tree" model="ir.ui.view">
+            <field name="name">View Results</field>
+            <field name="model">marks.child</field>
+            <field name="arch" type="xml">
+                <tree string="marks.child">
+                    <field name="subject10"/>
+                    <field name="subject20"/>
+                    <field name="subject30"/>
+                    <field name="percentage_new"/>
+                        <!--<field name="marks_list"/>-->
+               </tree>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>

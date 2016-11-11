@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <template id="template1">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <style>
+                                .main_table,tr,td,th{
+                                width:100%,
+                                border:3px solid black;
+                                }
+                                .sub_table,tr,td,th{
+                                border:1px solid blue;
+                                }
+
+                            </style>
+
+                            <table class="main_table">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>
+                                        <table class="sub_table">
+                                            <tr>
+                                                <th>Sub Table Name</th>
+                                                <th>Sub Table Addres</th>
+                                            </tr>
+                                            <tr>
+                                                <td rowspan="2">OJAS</td>
+                                                <td rowspan="2">MEHTA</td>
+                                            </tr>
+                                        </table>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td><span t-field="o.name"></span></td>
+                                    <td><span t-field="o.address"></span> </td>
+                                    <td><span t-esc="get_current_time()"></span></td>
+                                    <td><span t-raw="an_custom()"></span> </td>
+                                    <td><span t-esc="an_custom()"></span> </td>
+                                </tr>
+                        </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>

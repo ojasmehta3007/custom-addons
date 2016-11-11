@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+        <template id="commission_template">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <table class="table-bordered" style="width:100%">
+                                <tr>
+                                    <th>User</th>
+                                    <th>Done sales Order:</th>
+                                    <th>Sale order Amount:</th>
+                                    <th>Commission Amount:</th>
+                                </tr>
+                                <t t-set="totalcomm" t-value="0"/>
+                                <t t-set="grandtotal" t-value="0"/>
+
+                                <t t-foreach="get_sale_order_line(o)" t-as="row">
+                                <tr>
+                                    <td><span t-esc="row.get('username')"/></td>
+                                    <td><span t-esc="row.get('donesalesorder')"/></td>
+                                    <td><span t-esc="row.get('amounttotal')"/></td>
+                                    <td><span t-esc="row.get('commissionamount')"/></td>
+                                </tr>
+                                       <t t-set="totalcomm" t-value="totalcomm+row.get('commissionamount')"/>
+                                        <t t-set="grandtotal" t-value="grandtotal+row.get('amounttotal')"/>
+                                </t>
+                                <tr>
+                                    <td><hr/></td>
+                                    <td><hr/></td>
+                                    <td><b>GRAND TOTAL:  </b><span t-esc="grandtotal"/></td>
+                                    <td><b>TOTAL COMM:  </b><span t-esc="totalcomm"/></td>
+                                </tr>
+                                <!--<t t-foreach="get_sale_order_line(o)" t-as="row">-->
+                                <!--<tr>-->
+                                    <!--<td></td>-->
+                                    <!--<td></td>-->
+                                    <!--<td><span t-esc="row.get('totalcomm')"/></td>-->
+                                    <!--<td><span t-esc="row.get('grandtotal')"/></td>-->
+                                <!--</tr>-->
+                        </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>
+
+
+        <!--<template id="final_exam.report_custom_sale_order_header_footer">-->
+            <!--<t t-call="final_exam.report_custom_sale_order_header"/>-->
+            <!--<t t-raw="0"/>-->
+            <!--<t t-call="final_exam.report_custom_sale_order_footer"/>-->
+        <!--</template>-->
+
+
+        <!--<template id="report_custom_sale_order_header">-->
+            <!--<t t-call="report.html_container">-->
+                <!--<t t-foreach="docs" t-as="o">-->
+                    <!--<div class="header">-->
+                        <!--<div class="row">-->
+                            <!--<table class="header_table">-->
+                                <!--<tr >-->
+                                    <!--<td>-->
+                                    <!--<p t-field="o.partner_id.image" t-field-options='{"widget":"image"}'>-->
+                                    <!--<h1>HEADER</h1>-->
+                                        <!--</p>-->
+                                    <!--</td>-->
+                                    <!--<td>-->
+                                        <!--<h1 style="text-align:center;">ADDRESS</h1>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                            <!--</table>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</t>-->
+            <!--</t>-->
+        <!--</template>-->
+
+        <!--<template id="report_custom_sale_order_footer">-->
+            <!--<t t-call="report.html_container">-->
+                <!--<t t-foreach="docs" t-as="o">-->
+                    <!--<div class="footer">-->
+                            <!--<h1>THIS IS FOOTER</h1>-->
+                    <!--</div>-->
+                <!--</t>-->
+            <!--</t>-->
+        <!--</template>-->
+
+
+

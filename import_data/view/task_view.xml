@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+         <menuitem name="Task"
+                  id="menu_task"/>
+
+
+<!--==============================================student class==========================================-->
+         <record id="view_student_tree_task" model="ir.ui.view">
+            <field name="name">student.tree</field>
+            <field name="model">student.student</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="student">
+                    <field name="name"/>
+                    <field name="roll_no"/>
+                    <field name="standard"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--=========================================wizard Class================================-->
+
+
+                    <!--=====================total wizard starts==================-->
+
+                    <record id="total_wizard_form" model="ir.ui.view">
+                                <field name="name">Total Calculation</field>
+                                <field name="model">wizard.total.calculate</field>
+                                <field name="arch" type="xml">
+                                    <form string="Total Calculation">
+                                        <sheet>
+                                            <button name="o2m_calculate" string="Return To Main" type="object"/>
+                                        <group>
+                                            <field name="paid_fees"/>
+                                            <field name="amount_due"/>
+                                            <!--<field name="act" invisible="True"/>-->
+                                        </group>
+                                        </sheet>
+                                   </form>
+                                </field>
+                            </record>
+
+
+                    <record id="total_wizard_action" model="ir.actions.act_window">
+                                <field name="name">Total Calculation</field>
+                                <field name="type">ir.actions.act_window</field>
+                                <field name="res_model">wizard.total.calculate</field>
+                                <field name="view_type">form</field>
+                                <field name="view_mode">form</field>
+                                <field name="view_id" ref="total_wizard_form"/>
+                                <field name="target">new</field>
+                                <field name="multi">True</field>
+                            </record>
+
+                                <!--=====================total wizard ends==================-->
+                <!--=====================total wizard starts=2=================-->
+
+                    <record id="total_wizard_form_2" model="ir.ui.view">
+                                <field name="name">Total Calculation</field>
+                                <field name="model">wizard.total.calculate.o2m</field>
+                                <field name="arch" type="xml">
+                                    <form string="Total Calculation">
+                                        <sheet>
+                                        <group>
+                                            <field name="paid_fees"/>
+                                            <!--<field name="sidd_challenge_2"/>-->
+                                            <field name="amount_due"/>
+                                            <field name="month_name"/>
+                                        </group>
+                                        </sheet>
+                                   </form>
+                                </field>
+                            </record>
+
+                        <record id="total_wizard_tree_2" model="ir.ui.view">
+                                <field name="name">Total Calculation</field>
+                                <field name="model">wizard.total.calculate.o2m</field>
+                                <field name="arch" type="xml">
+                                    <tree string="Total Calculation">
+                                            <field name="paid_fees"/>
+                                            <!--<field name="sidd_challenge_2"/>-->
+                                            <field name="amount_due"/>
+                                            <field name="month_name"/>
+                                   </tree>
+                                </field>
+                        </record>
+
+
+                    <record id="total_wizard_action_2" model="ir.actions.act_window">
+                                <field name="name">Total Calculation</field>
+                                <field name="type">ir.actions.act_window</field>
+                                <field name="res_model">wizard.total.calculate.o2m</field>
+                                <field name="view_type">form</field>
+                                <field name="view_mode">form</field>
+                                <field name="view_id" ref="total_wizard_form_2"/>
+                                <field name="target">new</field>
+                                <field name="multi">True</field>
+                            </record>
+
+                                <!--=====================total wizard ends=2=================-->
+
+
+        <record id="student_class__wizard_form" model="ir.ui.view">
+                    <field name="name">student.class</field>
+                    <field name="model">wizard.fees.calculate</field>
+                    <field name="arch" type="xml">
+                        <form string="fees">
+                            <sheet>
+                                <button name="pass_all_values" string="Calculate Total Amount" type="object" />
+                            <group>
+                                <field name="computer_fee"/>
+                                <field name="tution_fee"/>
+                                <field name="monthly_fee"/>
+                                <field name="month_name"/>
+                                <field name="date_time"/>
+                                <field name="roll_no"/>
+                            </group>
+                            </sheet>
+                       </form>
+                    </field>
+                </record>
+
+                <record id="sudent_class_wizard_action" model="ir.actions.act_window">
+                    <field name="name">Wizard Action</field>
+                    <field name="type">ir.actions.act_window</field>
+                    <field name="res_model">wizard.fees.calculate</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">form</field>
+                    <field name="view_id" ref="student_class__wizard_form"/>
+                    <field name="target">new</field>
+                    <field name="multi">True</field>
+                </record>
+
+        <!--===========================================wizard ends===================================-->
+
+        <record id="view_student_form_task" model="ir.ui.view">
+            <field name="name">student.form.task</field>
+            <field name="model">student.student</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="student">
+                    <sheet>
+                        <button name="pass_roll_no" type="object" string="Calculate Fees"/>
+
+                         <group col="2">
+                             <group>
+                             <field name="name"/>
+                             <field name="roll_no"/>
+                             <field name="total_amount" attrs="{'readonly':[('is_true','=',True)]}"/>
+                             <field name="is_true" invisible="1"/>
+</group>
+                                <group col ="2">
+                                    <group>
+                                    <field name="total_amount_due"/>
+                                    <field name="for_month"/>
+                                    </group>
+                                </group>
+
+
+                        <group colspan="2">
+                            <field name="standard"/>
+                             <field name="sidd_challenge"/>
+                         </group>
+                         </group>
+
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_student_task" model="ir.actions.act_window">
+            <field name="name">student.student</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">student.student</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_student_filter"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a students
+                </p>
+                <p>
+                    Odoo will help you efficiently handle it.
+                </p>
+            </field>
+        </record>
+
+    <menuitem name="Student Record" id="student_task_id" action="action_student_task" parent="menu_task" />
+    <!--<menuitem name="Fees Record" id="fees_task_id" action="action_fees_task" parent="menu_task" />-->
+
+
+    </data>
+</openerp>

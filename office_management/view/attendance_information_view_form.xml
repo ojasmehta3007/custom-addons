@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <menuitem name="Office Management"
+            id="office_management.menu_office_management"/>
+
+        <record id="view_attendance_information_tree" model="ir.ui.view">
+            <field name="name">attendance_information.tree</field>
+            <field name="model">attendance.information</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="attendance_information">
+                    <field name="total_no_of_working_day"/>
+                    <field name="actual_working_days"/>
+                    <field name="absent_days"/>
+                    <field name="date"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_attendance_information_form" model="ir.ui.view">
+            <field name="name">attendance_information.form</field>
+            <field name="model">attendance.information</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="attendance_information">
+                    <sheet>
+                        <group>
+                            <field name="total_no_of_working_day" string="Total No Of Working Days :"/>
+                            <field name="actual_working_days" string="Actual Working Days :"/>
+                            <field name="absent_days" string="Absent Days :"/>
+                            <field name="date" String="Date :"/>
+                            <field name="status" string="Status : " />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record id="action_attendance_information_management" model="ir.actions.act_window">
+            <field name="name">attendance_information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">attendance.information</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_teacher_filter"/> -->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a Attendance
+
+                </p><p>
+                    Odoo will help you efficiently handle School Management.
+                </p>
+            </field>
+        </record>
+
+<!--        <record id="action_student_tree" model="ir.actions.act_window.view">
+            <field name="sequence">1</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_student_tree"/>
+            <field name="act_window_id" ref="action_school_management"/>
+        </record>
+
+        <record id="action_student_form" model="ir.actions.act_window.view">
+            <field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_student_form"/>
+            <field name="act_window_id" ref="action_school_management"/>
+        </record>-->
+
+
+
+
+
+        <!--<menuitem name="attendance_information" id="menu_attendance_information" parent="office_management.menu_office_management"/> -->
+
+        <menuitem name="Employee Master" id="menu_employee" parent="office_management.menu_office_management"/>
+        <menuitem name="Attendance Information Records " action='action_attendance_information_management' id="menu_attendance_information_records" parent="menu_employee"/>
+
+    </data>
+</openerp>

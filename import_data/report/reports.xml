@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report id="commission_report_sale_order"
+                model="res.users"
+                string="Commission Report"
+                report_type="qweb-pdf"
+                name="import_data.commission_template"
+                file="import_data.commission_template"
+                menu = "True"
+                />
+
+        <report id="report_session_custom"
+                model="res.partner"
+                string="Employee Report"
+                name="import_data.employee_report_temp_id_custom"
+                file="import_data.employee_report_temp_id_custom"
+                report_type="qweb-pdf"
+                menu="True"/>
+
+
+        <report id="report_session_custom_new"
+                model="sale.order"
+                string="Employee Report NEW"
+                name="import_data.employee_report_temp_id_custom_new"
+                file="import_data.employee_report_temp_id_custom_new"
+                report_type="qweb-pdf"
+                menu="True"/>
+
+
+
+
+    </data>
+</openerp>

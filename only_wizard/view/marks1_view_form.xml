@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_marks1_tree" model="ir.ui.view">
+            <field name="name">marks1.tree</field>
+            <field name="model">marks1</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="marks1">
+                    <field name="subject_name_ref"/>
+                    <field name="marks_of_student"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_marks1_form" model="ir.ui.view">
+            <field name="name">marks.form</field>
+            <field name="model">marks1</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="marks1">
+                    <sheet>
+                        <group>
+                            <field name="student_name_ref"/>
+                            <field name="subject_name_ref" string="Subject Name Ref:"/>
+                            <field name="marks_of_student" string="Marks of Student :"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_marks1_management" model="ir.actions.act_window">
+            <field name="name">marks1</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">marks1</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a Marks in Only WIZARD
+                </p>
+                <p>
+                    Odoo will help you efficiently handle School Management.
+                </p>
+            </field>
+        </record>
+    </data>
+</openerp>

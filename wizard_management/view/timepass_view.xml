@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--<record id="view_timepass_tree" model="ir.ui.view">-->
+            <!--<field name="name">timepass.tree</field>-->
+            <!--<field name="model">timepass</field>-->
+            <!--<field name="priority">4</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<tree string="timepass">-->
+                    <!--<field name="name"/>-->
+                <!--</tree>-->
+            <!--</field>-->
+        <!--</record>-->
+
+        <!--<record id="view_timepass_form" model="ir.ui.view">-->
+            <!--<field name="name">timepass.form</field>-->
+            <!--<field name="model">timepass</field>-->
+            <!--<field name="priority">4</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<form string="timepass">-->
+                    <!--<sheet>-->
+                        <!--<group>-->
+                            <!--<field name="name" string="NAME:"/>-->
+                        <!--</group>-->
+                    <!--</sheet>-->
+                <!--</form>-->
+            <!--</field>-->
+        <!--</record>-->
+
+
+        <!--<record id="action_timepass_management" model="ir.actions.act_window">-->
+            <!--<field name="name">timepass</field>-->
+            <!--<field name="type">ir.actions.act_window</field>-->
+            <!--<field name="res_model">timepass</field>-->
+            <!--<field name="view_type">form</field>-->
+            <!--<field name="view_mode">tree,form</field>-->
+            <!--&lt;!&ndash;<field name="search_view_id" ref="view_student_filter"/>&ndash;&gt;-->
+            <!--<field name="help" type="html">-->
+                <!--<p class="oe_view_nocontent_create">-->
+                    <!--Click to create a timepass-->
+                    <!--aakkkakakakak-->
+                <!--</p>-->
+                <!--<p>-->
+                    <!--Odoo will help you efficiently handle timepass-->
+                <!--</p>-->
+            <!--</field>-->
+        <!--</record>-->
+        <!---->
+
+
+
+        <!--below is wizard action-->
+
+
+        <record id="timepass_form" model="ir.ui.view">
+            <field name="name">timepass</field>
+            <field name="model">timepass</field>
+            <field name="arch" type="xml">
+                <form string="timepass">
+                    <group>
+                        <field name="name"/>
+                        <field name="models_id"/>
+                        <button name="download" string="Download" type="object"/>
+                        <field name="attachments"/>
+                    </group>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_timepass" model="ir.actions.act_window">
+            <field name="name">timepass</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">timepass</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="timepass_form"/>
+            <field name="target">new</field>
+            <field name="multi">True</field>
+        </record>
+
+
+
+
+    </data>
+</openerp>

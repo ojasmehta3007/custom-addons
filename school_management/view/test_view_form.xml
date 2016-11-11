@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="teacher_inherit" model="ir.ui.view">
+            <field name="name">teacher.form</field>
+            <field name="model">teacher</field>
+            <field name="inherit_id" ref="view_teacher_form"/>
+            <field name="arch" type="xml">
+                <field name = "pincode" position="after">
+                    <field name="regno" string="Create/Choose Subject :"/>
+                    <field name="exam_id" string="Exam ID:"/>
+                </field>
+            </field>
+        </record>
+
+
+
+        <!--<menuitem name="Test" id="menu_test" parent="school_management.main_menu_school"/>-->
+        <!--<menuitem name="test" id="menu_test_child" parent="menu_test"/>-->
+
+    </data>
+</openerp>

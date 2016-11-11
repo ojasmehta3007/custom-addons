@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+        <record id="view_alumni_tree" model="ir.ui.view">
+            <field name="name">alumni.tree</field>
+            <field name="model">alumni</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="alumni">
+                    <field name="passout_year"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="alumni" model="ir.ui.view">
+            <field name="name">alumni.form</field>
+            <field name="model">alumni</field>
+            <field name="priority">4</field>
+            <field name="inherit_id" ref="view_student_form"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <!--<form string="student">-->
+                    <!--<sheet>-->
+                        <!--<group>-->
+                <field name="name" position="after">
+                            <field name="choose_teachers" string="Choose Teachers Here" />
+                            <field name="passout_year" string="PASSOUT:"/>
+                            <field name="second_name" string="Your Last Name Please:"/>
+                </field>
+                        <!--</group>-->
+                    <!--</sheet>-->
+                <!--</form>-->
+            </field>
+        </record>
+
+
+
+
+
+
+        <record id="action_alumni_management" model="ir.actions.act_window">
+            <field name="name">alumni</field>
+            <!--<field name="type">ir.actions.act_window</field>-->
+            <field name="res_model">alumni</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_teacher_filter"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Please alumni
+                </p><p>
+                    Click Above Button
+                </p>
+            </field>
+        </record>
+
+
+
+
+        <menuitem name="Alumni" id="menu_alumni" parent="school_management.menu_school_management"/>
+
+
+        <menuitem name="View alumni" action='action_alumni_management' id="menu_alumni_records" parent="menu_alumni"/>
+
+    </data>
+</openerp>

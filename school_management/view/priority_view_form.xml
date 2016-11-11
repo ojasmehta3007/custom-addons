@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_priority_table_tree" model="ir.ui.view">
+            <field name="name">priority_table.tree</field>
+            <field name="model">priority.table</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="priority_table">
+                    <field name="name"/>
+                    <field name="set_priority"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_priority_table_form" model="ir.ui.view">
+            <field name="name">priority_table.form</field>
+            <field name="model">priority.table</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="priority_table">
+                    <sheet>
+                        <button name="myfunction" string="Hit" type="object" />
+                    <group>
+                    <field name="name"/>
+                    <field name="set_priority" widget="radio"/>
+                    <field name="select_name"/>
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_priority_table" model="ir.actions.act_window">
+            <field name="name">priority_table</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">priority.table</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_student_filter"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a Priority Partners
+                </p>
+                <p>
+                    Odoo will help you efficiently handle This.
+                </p>
+            </field>
+        </record>
+
+
+        <record id="relation_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="relation"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="action_relation_inherit" model="ir.actions.act_window">
+            <field name="name">sale.order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <!--<field name="domain">[('priority_partner','=',True)]</field>-->
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+             <!--<field name="Search_view_id" ref="view_partner_tree_filter"/>-->
+            <!--<field name="search_view_id" ref="view_teacher_filter"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Hello
+                </p><p>
+                    Odoo.
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem name="Priority Table" id="menu_table" parent="school_management.menu_school_management"/>
+
+        <menuitem name="View Table" action='action_priority_table' id="menu_priority_table" parent="menu_table"/>
+
+
+        </data>
+    </openerp>

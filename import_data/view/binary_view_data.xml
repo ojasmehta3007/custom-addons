@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <menuitem name="Import Data NEW" id="import_data"/>
+
+        <record id="import_data_form_cust" model="ir.ui.view">
+                    <field name="name">import_data</field>
+                    <field name="model">import.data</field>
+                    <field name="arch" type="xml">
+                        <form string="Import">
+                            <sheet>
+                            <button name="import_data_calculate" string="Import Data" type="object"/>
+                            <group>
+                                <field name="binary_data"/>
+                            </group>
+                            </sheet>
+                       </form>
+                    </field>
+                </record>
+
+                <record id="import_data_action_wizard_cust" model="ir.actions.act_window">
+                    <field name="name">import_data_action_wizard</field>
+                    <field name="type">ir.actions.act_window</field>
+                    <field name="res_model">import.data</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">form</field>
+                    <field name="view_id" ref="import_data_form_cust"/>
+                    <field name="target">new</field>
+                    <field name="multi">True</field>
+                </record>
+
+        <menuitem id="submenu_import_data" name="Open Wizard" action="import_data_action_wizard_cust" parent="import_data"/>
+
+
+
+
+    </data>
+    </openerp>

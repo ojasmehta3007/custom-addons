@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+student123,Student_access,school_management.model_student,s_user_group,1,1,0,0
+subject123,Subject_access,school_management.model_subject,s_user_group,1,0,0,0
+teacher123,Teacher_access,school_management.model_teacher,s_user_group,1,0,0,0
+achievements123,achievements_access,school_management.model_achievements,s_user_group,1,0,0,0
+infosearch123,infosearch_access,school_management.model_info_search,s_user_group,1,0,0,0
+alumni123,alumni_access,school_management.model_alumni,s_user_group,1,0,0,0
+
+
+
+
+
+
+
+
+

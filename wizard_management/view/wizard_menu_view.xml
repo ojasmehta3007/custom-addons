@@ -1,0 +1,7 @@
+<openerp>
+    <data>
+        <menuitem name="Help" id="menu_wizard_management"/>
+
+        <menuitem name="Timepass" id="menu_timepass" action="action_timepass" parent="menu_wizard_management"/>
+    </data>
+</openerp>

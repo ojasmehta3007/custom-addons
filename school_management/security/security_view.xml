@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+                <!--student group in school Management-->
+        <record id ="school_management" model ="ir.module.category">
+            <field name="name">School Management</field>
+        </record>
+
+        <record id="s_user_group" model="res.groups">
+            <field name="name">studentss</field>
+            <field name="category_id" ref="school_management"/>
+        </record>
+
+                <!--Student Rule-->
+
+
+
+
+
+    </data>
+</openerp>

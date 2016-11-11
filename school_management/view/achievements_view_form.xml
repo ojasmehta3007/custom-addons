@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+        <record id="view_achievements_tree" model="ir.ui.view">
+            <field name="name">achievements.tree</field>
+            <field name="model">achievements</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="achievements">
+                    <field name="achieve"/>
+                    <field name="choose_student"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_achievements_form" model="ir.ui.view">
+            <field name="name">achievements.form</field>
+            <field name="model">achievements</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="achievements">
+                    <header>
+                            <field name="state" widget="statusbar" statubar_colors='{"new": "blue"}' />
+                        </header>
+                    <sheet>
+
+                        <div class="oe_button_box" name="button_box">
+                                <button name="start_state" type="object" groups="base.group_no_one" class="oe_stat_button" icon="fa-play" string="Start"></button>
+                                <button name="stop_state" type="object" groups="base.group_no_one" class="oe_stat_button" icon="fa-stop" string="Stop"></button>
+                            </div>
+                        <group>
+                            <field name="achieve" string="Your Achievements : "/>
+                            <field name="s_date" class="text-success"/>
+                            <field name="e_date" class="text-primary"/>
+                            <field name="time" class="text-info"/>
+                            <field name="choose_student" string="Students Are : "/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+        <!--<record id="view_subject_filter" model="ir.ui.view">-->
+            <!--<field name="name">subject.select</field>-->
+            <!--<field name="model">subject</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<search string="Search teacher">-->
+                    <!--<field name="name" string="Name"/>-->
+               <!--</search>-->
+            <!--</field>-->
+        <!--</record>-->
+
+        <record id="action_achievements_management" model="ir.actions.act_window">
+            <field name="name">achievements</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">achievements</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_teacher_filter"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Please Mention Your Achievements
+                </p><p>
+                    Click Above Button
+                </p>
+            </field>
+        </record>
+
+
+
+
+
+       <!-- <menuitem name="School" id="main_menu_school" parent="school_management.menu_school_management"/> -->
+        <menuitem name="achievements" id="menu_achievements" parent="school_management.menu_school_management" />
+
+    <!--    <menuitem name="Teachers" id="menu_teachers" parent="school_management.menu_school_management"/>
+        <menuitem name = "teach" id="menu_teach" parent="menu_teachers" /> -->
+        <menuitem name="View achievements" action='action_achievements_management' id="menu_achievements_records" parent="menu_achievements"/>
+
+    </data>
+</openerp>

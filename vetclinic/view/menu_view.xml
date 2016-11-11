@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+     <menuitem id="vetclinic" name="Vet Clinic"/>
+
+     <menuitem id="vetclinic_menu" name="Vet Clinic" parent="vetclinic"/>
+
+     <menuitem id="vetclinic_animal_menu" name="Animals" action="vetclinic_animal_action" parent="vetclinic_menu"/>
+
+    <menuitem id="vetclinic_classification_menu" name="Classification" action="vetclinic_classification_action" parent="vetclinic_menu"/>
+
+    <menuitem id="vetclinic_breed_menu" name="Breeds" action="vetclinic_breed_action" parent="vetclinic_menu"/>
+
+    <menuitem id="vetclinic_animalvaccinations_menu" name="Animal Vaccinations" action="vetclinic_animalvaccinations_action" parent="vetclinic_menu"/>
+
+    <menuitem id="vetclinic_image_menu" name="Images" action="vetclinic_image_action" parent="vetclinic_menu"/>
+
+
+    </data>
+</openerp>
+

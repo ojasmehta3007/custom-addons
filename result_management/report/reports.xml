@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report id="main_file"
+                model="student"
+                string="Print Template 1"
+                report_type="qweb-pdf"
+                name="result_management.template1"
+                file="result_management.template1"
+                menu = "True"
+        />
+    </data>
+</openerp>

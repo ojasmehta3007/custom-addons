@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_info_search_tree" model="ir.ui.view">
+            <field name="name">info_search.tree</field>
+            <field name="model">info.search</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="info_search">
+                    <field name="student_name"/>
+                    <field name="student_rollno"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_info_search_form" model="ir.ui.view">
+            <field name="name">info_search.form</field>
+            <field name="model">info.search</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="info_search">
+                    <sheet>
+                        <group colspan="2">
+                            <field name="student_name" string="Student Name : "/>
+                            <field name="student_rollno" String = "Student Roll No : "/>
+                        </group>
+                        <group colspan="2">
+                            <center>
+                                <button name="search_records" type="object" String="Search"/>
+                                <button name="browse_records" type="object" String="Browse"/>
+                            </center>
+                        </group>
+                        <group colspan="2">
+                            <field name="student_details" string="Student Details" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_info_search_management" model="ir.actions.act_window">
+            <field name="name">info_search</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">info.search</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_info_search_filter"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to Search Records
+                </p>
+                <p>
+                    I will Help You To Search the F***ing Thing.
+                </p>
+            </field>
+        </record>
+
+
+
+        <!--        <record id="action_student_tree" model="ir.actions.act_window.view">
+                    <field name="sequence">1</field>
+                    <field name="view_mode">tree</field>
+                    <field name="view_id" ref="view_student_tree"/>
+                    <field name="act_window_id" ref="action_school_management"/>
+                </record>
+
+                <record id="action_student_form" model="ir.actions.act_window.view">
+                    <field name="sequence">2</field>
+                    <field name="view_mode">form</field>
+                    <field name="view_id" ref="view_student_form"/>
+                    <field name="act_window_id" ref="action_school_management"/>
+                </record>-->
+
+        <menuitem name="Info_Search_Master" id="info_search_Master" parent="school_management.menu_school_management" />
+        <menuitem name="Info_Search" action='action_info_search_management' id="info_search" parent="info_search_Master" />
+
+        <!--<menuitem name="School" id="main_menu_school" parent="school_management.menu_school_management" sequence="1" />-->
+        <!--<menuitem name="Students" id="menu_students" parent="school_management.main_menu_school"/>-->
+      <!--  <menuitem name="Stud" id="menu_stud" parent="menu_students"/> -->
+        <!--<menuitem name="Student Records " action='action_student_management' id="menu_students_records"-->
+                  <!--parent="menu_students"/>-->
+
+
+    </data>
+</openerp>

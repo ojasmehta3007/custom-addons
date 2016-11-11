@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+     <data noupdate="1">
+
+
+         <record id="sub_data" model="teacher">
+             <field name="name">OJAS</field>
+             <field name="address">MUM</field>
+         </record>
+          <record id="sub_data1" model="teacher">
+             <field name="name">Santosh</field>
+             <field name="address">MUMBAI</field>
+         </record>
+
+         <record id="data_student" model="student">
+             <field name="name">OJAS</field>
+             <field name="address">OJAS</field>
+             <field name="pincode">1000</field>
+             <field name="telephone">1000</field>
+             <field name="choose_teacher1" ref="sub_data"/>
+             <field name="choose_teacher1" ref="sub_data1"/>
+             <field name="birthdate" eval="[datetime.now().strftime('%Y-%m-%d')]"/>
+             <field name="joindate" eval="[datetime.now().strftime('%Y-%m-%d %H:%M:%S')]"/>
+             <field name="stand">one</field>
+         </record>
+
+        <record id="sub_data_one" model="achievements">
+            <field name="achieve">1.Swimming Champion</field>
+            <field name="choose_student" ref="data_student"></field>
+        </record>
+
+
+
+    </data>
+</openerp>

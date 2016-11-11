@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_partner_tree" model="ir.ui.view">
+            <field name="name">res.partner.tree</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="Contacts">
+                    <field name="check_priority"/>
+                </tree>
+            </field>
+        </record>
+
+         <record id="priority_form" model="ir.ui.view">
+            <field name="name">base.res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <notebook>
+                    <page string="Check Priorities">
+                    <field name="check_priority"/>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        </data>
+    </openerp>

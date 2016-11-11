@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--<record id="marks_tree" model="ir.ui.view">-->
+            <!--<field name="name">View Results</field>-->
+            <!--<field name="model">marks</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<tree string="marks">-->
+                    <!--<field name="subject10"/>-->
+                    <!--<field name="subject20"/>-->
+                    <!--<field name="subject30"/>-->
+                    <!--<field name="percentage_new"/>-->
+                <!--</tree>-->
+            <!--</field>-->
+        <!--</record>-->
+
+        <record id="marks_form" model="ir.ui.view">
+            <field name="name">View Results</field>
+            <field name="model">marks</field>
+            <field name="arch" type="xml">
+                <form string="marks">
+
+                        <!--<field name="subject10"/>-->
+                        <!--<field name="subject20"/>-->
+                        <!--<field name="subject30"/>-->
+                        <!--<field name="percentage_new"/>-->
+                        <tree>
+                            <group>
+                                <field name="marks_child_O2M"/>
+                                    <!--<field name="subject10"/>-->
+                                    <!--<field name="subject20"/>-->
+                                    <!--<field name="subject30"/>-->
+                                    <!--<field name="percentage_new"/>-->
+                            </group>
+
+                         </tree>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_marks" model="ir.actions.act_window">
+            <field name="name">View Results</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">marks</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="marks_form"/>
+            <field name="target">new</field>
+            <field name="multi">True</field>
+        </record>
+
+        <record model="ir.values" id="student_marks">
+            <field name="model_id" ref="model_student"/>
+            <field name="name">View Results</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_marks'))" />
+            <field name="key">action</field>
+            <field name="model">student</field>
+        </record>
+    </data>
+</openerp>

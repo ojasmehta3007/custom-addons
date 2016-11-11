@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--============================my code starts========================================-->
+
+        <record model="ir.ui.view" id="view_sale_order_pivot">
+            <field name="name">sale.order.pivot.custom</field>
+            <field name="model">sale.order.inherit</field>
+            <field name="arch" type="xml">
+                <!--<form string="Button">-->
+                <!--</form>-->
+                <pivot string="Graph View PIVOT">
+                    <field name="my_name" type="row"/>
+                    <field name="my_total_qty" type="row"/>
+                    <field name="my_price_unit" type="row"/>
+                    <field name="my_price_total" type="row"/>
+                    <field name="my_avg_unit_price" type="row"/>
+                </pivot>
+            </field>
+        </record>
+
+         <!--<record model="ir.ui.view" id="view_sale_order_pivot">-->
+            <!--<field name="name">sale.order.pivot</field>-->
+            <!--<field name="model">sale.order</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<pivot string="Sales Orders">-->
+                    <!--<field name="date_order" type="row"/>-->
+                    <!--<field name="amount_total" type="measure"/>-->
+                <!--</pivot>-->
+            <!--</field>-->
+        <!--</record>-->
+
+         <record id="view_student_form" model="ir.ui.view">
+            <field name="name">student.form</field>
+            <field name="model">sale.order.inherit</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="student">
+                    <sheet>
+                        <group>
+                           <field name="my_name" type="row"/>
+                    <field name="my_total_qty" type="row"/>
+                    <field name="my_price_unit" type="row"/>
+                    <field name="my_price_total" type="row"/>
+                    <field name="my_avg_unit_price" type="row"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <record id="action_sale_order_pivot" model="ir.actions.act_window">
+            <field name="name">sale.order.pivot.custom</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.inherit</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">pivot,form</field>
+            <!--<field name="search_view_id" ref="view_student_filter"/>-->
+        </record>
+
+        <menuitem name="Custom Pivot" id="sale_order_custom_pivot" parent="base.menu_sale_report" action="action_sale_order_pivot"/>
+
+
+        <!--==========================my ends=====================================================-->
+
+
+         <!--<record id="view_order_product_pivot_copy" model="ir.ui.view">-->
+         <!--<field name="name">sale.report.pivot</field>-->
+         <!--<field name="model">sale.order.inherit</field>-->
+         <!--<field name="arch" type="xml">-->
+             <!--<pivot string="Sales Analysis" disable_linking="True">-->
+                 <!--<field name="team_id" type="col"/>-->
+                 <!--<field name="date" interval="month" type="row"/>-->
+                 <!--<field name="price_subtotal" type="measure"/>-->
+             <!--</pivot>-->
+         <!--</field>-->
+    <!--</record>-->
+
+    <!--<record id="view_order_product_graph_copy" model="ir.ui.view">-->
+         <!--<field name="name">sale.report.graph</field>-->
+         <!--<field name="model">sale.order.inherit</field>-->
+         <!--<field name="arch" type="xml">-->
+             <!--<graph string="Sales Analysis">-->
+                 <!--<field name="date" type="row"/>-->
+                 <!--<field name="price_subtotal" type="measure"/>-->
+             <!--</graph>-->
+         <!--</field>-->
+    <!--</record>-->
+
+    <!--&lt;!&ndash; Custom reports (aka filters) &ndash;&gt;-->
+    <!--<record id="filter_sale_report_sales_funnel_copy" model="ir.filters">-->
+        <!--<field name="name">Sales Funnel</field>-->
+        <!--<field name="model_id">sale.order.inherit</field>-->
+        <!--<field name="domain">['&amp;', ('date','&lt;=', time.strftime('%%Y-12-31')), '&amp;', ('date','&gt;=',time.strftime('%%Y-01-01')), ('state','not in',('cancel',))]</field>-->
+        <!--<field name="user_id" eval="False"/>-->
+        <!--<field name="context">{'group_by': ['state'], 'measures': ['price_subtotal']}</field>-->
+    <!--</record>-->
+    <!--<record id="filter_sale_report_salespersons_copy" model="ir.filters">-->
+        <!--<field name="name">By Salespersons</field>-->
+        <!--<field name="model_id">sale.order.inherit</field>-->
+        <!--<field name="user_id" eval="False"/>-->
+        <!--<field name="context">{'group_by': ['date:month', 'user_id']}</field>-->
+    <!--</record>-->
+    <!--<record id="filter_sale_report_salesteam_copy" model="ir.filters">-->
+        <!--<field name="name">By Salesteam</field>-->
+        <!--<field name="model_id">sale.order.inherit</field>-->
+        <!--<field name="user_id" eval="False"/>-->
+        <!--<field name="context">{'group_by': ['date:month', 'team_id']}</field>-->
+    <!--</record>-->
+    <!--<record id="filter_isale_report_product_copy" model="ir.filters">-->
+        <!--<field name="name">By Product</field>-->
+        <!--<field name="model_id">sale.order.inherit</field>-->
+        <!--<field name="user_id" eval="False"/>-->
+        <!--<field name="context">{'group_by': ['date:month', 'product_id']}</field>-->
+    <!--</record>-->
+
+    <!--<record id="view_order_product_search_copy" model="ir.ui.view">-->
+        <!--<field name="name">sale.report.search</field>-->
+        <!--<field name="model">sale.order.inherit</field>-->
+        <!--<field name="arch" type="xml">-->
+            <!--<search string="Sales Analysis">-->
+                <!--<field name="date"/>-->
+                <!--<filter string="This Year" name="year" invisible="1" domain="[('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',time.strftime('%%Y-01-01'))]"/>-->
+                <!--<filter name="Quotations" string="Quotations" domain="[('state','in', ('draft', 'sent'))]"/>-->
+                <!--<filter name="Sales" string="Sales" domain="[('state','not in',('draft', 'cancel', 'sent'))]"/>-->
+                <!--<separator/>-->
+                <!--<field name="partner_id"/>-->
+                <!--<field name="product_id"/>-->
+                <!--<field name="user_id"/>-->
+                <!--<group expand="0" string="Extended Filters">-->
+                    <!--<field name="categ_id" filter_domain="[('categ_id', 'child_of', self)]"/>-->
+                    <!--<field name="company_id" groups="base.group_multi_company"/>-->
+                <!--</group>-->
+                <!--<group expand="1" string="Group By">-->
+                    <!--<filter string="Salesperson" name="User" context="{'group_by':'user_id'}"/>-->
+                    <!--<filter string="Sales Team" context="{'group_by':'team_id'}"/>-->
+                    <!--<filter string="Partner's Country" name="country_id" context="{'group_by':'country_id'}"/>-->
+                    <!--<filter string="Customer" name="Customer" context="{'group_by':'partner_id'}"/>-->
+                    <!--<filter string="Product Category" name="Category" context="{'group_by':'categ_id'}"/>-->
+                    <!--<filter name="status" string="Status" context="{'group_by':'state'}"/>-->
+                    <!--<filter string="Company" groups="base.group_multi_company" context="{'group_by':'company_id'}"/>-->
+                    <!--<separator/>-->
+                    <!--<filter string="Order Month" context="{'group_by':'date:month'}" help="Ordered date of the sales order"/>-->
+                <!--</group>-->
+            <!--</search>-->
+        <!--</field>-->
+    <!--</record>-->
+
+    <!--<record id="action_order_report_all_copy" model="ir.actions.act_window">-->
+        <!--<field name="name">Sales Analysis</field>-->
+        <!--<field name="res_model">sale.order.inherit</field>-->
+        <!--<field name="view_type">form</field>-->
+        <!--<field name="view_mode">pivot,graph</field>-->
+        <!--<field name="view_id"></field>  &lt;!&ndash; force empty &ndash;&gt;-->
+        <!--<field name="search_view_id" ref="view_order_product_search_copy"/>-->
+        <!--<field name="context">{'search_default_Sales':1, 'group_by_no_leaf':1,'group_by':[]}</field>-->
+        <!--<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>-->
+    <!--</record>-->
+
+        <!--<menuitem name="Sales_copy" action="action_order_report_all_copy" id="menu_report_product_all_copy" parent="base.menu_sale_report" sequence="10"/>-->
+
+
+    </data>
+</openerp>

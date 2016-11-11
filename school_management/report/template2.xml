@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <template id="template_student">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <field t-esc="get_current_time()"/>
+                            <!--<style>-->
+                                <!--table2{-->
+                                <!--width:100%;-->
+                                <!--border-style:solid;-->
+                                <!--&lt;!&ndash;position:absolute;&ndash;&gt;-->
+                                <!--&lt;!&ndash;top:50%;&ndash;&gt;-->
+                                <!--}-->
+                                <!--tr,td,th{-->
+                                <!--border:2px solid #f0f0f0-->
+                                <!--}-->
+                                <!--tr{-->
+                                <!--page-break-inside:avoid;-->
+                                <!--}-->
+                                <!--table1{-->
+                                <!--background-size:100px 100px;-->
+                                <!--height:50px;-->
+                                <!--width:50px;-->
+                                <!--}-->
+                                <!--&lt;!&ndash;table2{&ndash;&gt;-->
+                                <!--&lt;!&ndash;position:relative;&ndash;&gt;-->
+                                <!--&lt;!&ndash;top:100%;&ndash;&gt;-->
+                                <!--&lt;!&ndash;left:50%;&ndash;&gt;-->
+                                <!--&lt;!&ndash;}&ndash;&gt;-->
+                                <!--&lt;!&ndash;table1{&ndash;&gt;-->
+                                <!--&lt;!&ndash;border-style:solid;&ndash;&gt;-->
+                                <!--&lt;!&ndash;}&ndash;&gt;-->
+
+                            <!--</style>-->
+
+                            <style>
+                                table,tr,td,th{
+                                border:1px solid #225252;
+                                text-align:center;
+                                }
+
+                            </style>
+
+
+                            <!--<div class="table1" >-->
+                            <div><h3><span t-field="o.name"/>'s Image:</h3></div>
+                            <!--<h2><span t-field="o.name"/>'s Report</h2>-->
+                            <div style="padding:20px;width:200px;margin:20px" t-field="o.image" t-field-options='{"widget":"image"}'></div>
+                            <!--</div>-->
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Address</th>
+                                        <th>Pincode</th>
+                                        <th>Telephone</th>
+                                        <th>Teacher</th>
+                                        <th>BirthDate</th>
+                                        <th>Achievements</th>
+                                        <th>Student Achiever's Name</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span t-field="o.name"></span>
+                                        </td>
+                                        <!--<td>-->
+                                            <!--<span t-field="o.image"></span>-->
+                                        <!--</td>-->
+                                        <td>
+                                            <span t-field="o.address"></span>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.pincode"></span>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.telephone"></span>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.choose_teacher">
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.choose_teacher.birthdate"/>
+                                        </td>
+                                        <td t-foreach="o.achievements" t-as="line">
+                                            <span t-field="line.achieve"/>
+                                        </td>
+                                        <td t-foreach="o.achievements" t-as="line">
+                                            <span t-field="line.choose_student"/>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+
+                        </div>
+                    </t>
+
+                </t>
+            </t>
+            </template>
+        </data>
+    </openerp>

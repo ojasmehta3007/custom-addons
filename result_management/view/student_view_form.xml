@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_student_tree" model="ir.ui.view">
+            <field name="name">student.tree</field>
+            <field name="model">student</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="student">
+                    <field name="name"/>
+                    <field name="student_marks_rel"  widget='one2many'/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_student_form" model="ir.ui.view">
+            <field name="name">student.form</field>
+            <field name="model">student</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="student">
+                    <sheet>
+                        <header>
+                            <button string="Result" type="object" name="show_result" />
+                        </header>
+                        <group>
+                            <field name="name" string="Student Name:" />
+                            <field name="user_id" />
+                            <field name="student_teacher" />
+                            <field name="student_marks_rel">
+                                <tree string="marks" editable="true">
+                                    <!--<field name="student_name_ref"/>-->
+                                    <field name="subject_name_ref" context="{'teacher_id':parent.student_teacher}"/>
+                                    <field name="marks_of_student"/>
+
+                                </tree>
+                            </field>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="view_achievement_kanban_new">
+            <field name="name">student.kanban</field>
+            <field name="model">student</field>
+            <field name="arch" type="xml">
+        <kanban default_group_by="name" class="o_kanban_small_column">
+            <field name="name"
+                   options="{&quot;group_by_tooltip&quot;: {&quot;requirements&quot;: &quot;Description&quot;, &quot;legend_priority&quot;: &quot;Use of stars&quot;}}"/>
+            <field name="name"/>
+            <field name="student_marks_rel"/>
+            <templates>
+                <t t-name="kanban-box">
+                    <div t-attf-class="oe_kanban_global_click">
+                        <div class="o_dropdown_kanban dropdown">
+
+                            <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
+                                <span class="fa fa-bars fa-lg"/>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <t t-if="widget.editable">
+                                    <li>
+                                        <a type="edit">Edit</a>
+                                    </li>
+                                </t>
+                                <t t-if="widget.deletable">
+                                    <li>
+                                        <a type="delete">Delete</a>
+                                    </li>
+                                </t>
+                            </ul>
+                        </div>
+                        <div class="oe_kanban_content">
+                            <div>
+                                <strong>
+                                    <field name="name"/>
+                                    <field name="student_marks_rel"  widget='one2many'/>
+                                </strong>
+                            </div>
+                            <div class="text-muted">
+                                <field name="name"/>
+                            </div>
+                        </div>
+                        <div class="oe_clear"/>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+        </field>
+        </record>
+
+
+
+        <record id="action_student_management" model="ir.actions.act_window">
+            <field name="name">student</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">student</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a students in Results Management
+                </p>
+                <p>
+                    Odoo will help you efficiently handle School Management.
+                </p>
+            </field>
+        </record>
+    </data>
+</openerp>

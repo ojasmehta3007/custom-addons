@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+
+        <record id="vetclinic_animal_form" model="ir.ui.view">
+            <field name="name">Animals.form</field>
+            <field name="model">vetclinic.animal</field>
+            <field name="view_type">form</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="Labels">
+                    <sheet>
+                        <button name="myfunction" type="object" string="Submit" />
+                        <group>
+                  <field name="name"/>
+                  <field name="birthdate"/>
+                  <field name="classification_id"/>
+                  <field name="breed_id"/>
+                  <field name="animal_breed"/>
+                  <field name="labels_ids" widget="many2many_tags"/>
+                  <field name="res_partner_id" domain="[('customer','=',True)]"/>
+
+                         </group>
+                            <notebook colspan="4">
+                                <page string="Animal History">
+                                    <field name="history" nolabel="1" placeholder="Write Here"/>
+                                </page>
+                                <page string="Vaccinations">
+
+                                    <field name="animalvaccinations_id" nolabel="1"/>
+                                </page>
+
+                            </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="vetclinic_animal_tree" model="ir.ui.view">
+            <field name="name">Animals.tree</field>
+            <field name="model">vetclinic.animal</field>
+            <field name="view_type">tree</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="Animals">
+                  <field name="name"/>
+                  <field name="birthdate"/>
+                  <field name="classification_id"/>
+                  <field name="breed_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="vetclinic_animal_search_view" model="ir.ui.view">
+            <field name="name">Animal.search</field>
+            <field name="model">vetclinic.animal</field>
+            <field name="arch" type="xml">
+                <search string="Animal String">
+                    <filter string="Dogs" name="animal_dogs" domain="[('classification_id','=','Dog')]"/>
+                    <filter string="Cats" name="animal_cats" domain="[('classification_id','=','cat')]"/>
+
+                    <field name="name"/>
+                    <field name="breed_id"/>
+
+                    <group string="Group By">
+                        <filter string="classification" name="classification" domain="[]" context="{'group_by':'classification_id'}"/>
+                    </group>
+
+                </search>
+            </field>
+        </record>
+
+
+        <record id="inherit_res_partner" model="ir.ui.view">
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                   <notebook position="inside">
+                        <page string="Pets">
+                            <field name="animal_ids" nolabel="1" colspan="4"/>
+                         </page>
+                   </notebook>
+            </field>
+        </record>
+
+         <record id="vetclinic_animal_action" model="ir.actions.act_window">
+            <field name="name">Animals</field>
+            <field name="res_model">vetclinic.animal</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click Here To Create New Animals
+                </p>
+                <p>
+                    Odoo will help you efficiently handle This.
+                </p>
+            </field>
+        </record>
+
+        <!--animals end-->
+
+         <!--animal vaccination tree view starts-->
+
+        <record id="vetclinic_animalvaccinations_tree" model="ir.ui.view">
+            <field name="name">Animalsvaccinations.tree</field>
+            <field name="model">vetclinic.animalvaccination</field>
+            <field name="view_type">tree</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="Animals Vaccinations">
+                  <field name="products_id"/>
+                  <field name="duedate"/>
+                  <field name="dateperfomed"/>
+                  <field name="animal_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="vetclinic_animalvaccinations_calendar" model="ir.ui.view">
+            <field name="name">Animalsvaccinations.calendar</field>
+            <field name="model">vetclinic.animalvaccination</field>
+            <field name="view_type">calendar</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <calendar string="Animals Vaccinations" date_start="duedate" color="animal_id">
+                    <field name="products_id"/>
+                      <field name="animal_id"/>
+                </calendar>
+            </field>
+        </record>
+
+
+         <record id="vetclinic_animalvaccinations_action" model="ir.actions.act_window">
+            <field name="name">Animals Vaccinations</field>
+            <field name="res_model">vetclinic.animalvaccination</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">calendar,tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click Here To Create New Animal Vaccinations
+                </p>
+                <p>
+                    Odoo will help you efficiently handle This.
+                </p>
+            </field>
+        </record>
+
+
+        <!--animal vaccination  ends-->
+
+
+        <record id="vetclinic_classification_form" model="ir.ui.view">
+            <field name="name">classification.form</field>
+            <field name="model">vetclinic.classification</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="classification">
+                    <sheet>
+                        <group>
+                            <field name="name" context="{}"/>
+                            <!--<button name="Pass" type="object" string="Pass" context="{'name': name }" />-->
+                            <field name="image_id"/>
+                            <field name="display_image" readonly="True" widget="image" class="oe_avatar"/>
+
+                        </group>
+                                    <notebook position="inside">
+                                        <page string="Breeds">
+                                            <field name="breed_id" nolabel="1" colspan="4"/>
+                                         </page>
+                                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="vetclinic_classification_action" model="ir.actions.act_window">
+            <field name="name">Classification</field>
+            <field name="res_model">vetclinic.classification</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'default_partner_id': context.get('name', False),}</field>
+           <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click Here To Create New Classification
+                </p>
+                <p>
+                    Odoo will help you efficiently handle This.
+                </p>
+            </field>
+        </record>
+
+
+
+        <!--classification ends-->
+
+        <record id="vetclinic_breed_form" model="ir.ui.view">
+            <field name="name">Breed.form</field>
+            <field name="model">vetclinic.breed</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="Breed">
+                    <sheet>
+                        <group>
+                              <field name="name"/>
+                              <field name="classification_id_of_breed"/>
+                            <field name="animal_o2m"/>
+                         </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="vetclinic_breed_action" model="ir.actions.act_window">
+            <field name="name">Breed</field>
+            <field name="res_model">vetclinic.breed</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click Here To Create New Breed
+                </p>
+                <p>
+                    Odoo will help you efficiently handle This.
+                </p>
+            </field>
+        </record>
+
+        <!--breed ends-->
+
+         <record id="vetclinic_labels_action" model="ir.actions.act_window">
+            <field name="name">Labels</field>
+            <field name="res_model">vetclinic.labels</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click Here To Create New Labels
+                </p>
+                <p>
+                    Odoo will help you efficiently handle This.
+                </p>
+            </field>
+        </record>
+
+<!--labels end-->
+
+        <record id="vetclinic_images_form" model="ir.ui.view">
+            <field name="name">Images.form</field>
+            <field name="model">vetclinic.images</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="Image">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                              <field name="image" widget="image" class="oe_avatar"/>
+                         </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <record id="vetclinic_image_action" model="ir.actions.act_window">
+            <field name="name">Images</field>
+            <field name="res_model">vetclinic.images</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click Here To Create New Images
+                </p>
+                <p>
+                    Odoo will help you efficiently handle This.
+                </p>
+            </field>
+        </record>
+
+<!--image ends-->
+
+    </data>
+</openerp>
+

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <template id="employee_report_temp_id_custom_new">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="import_data.report_custom_sale_order_header_footer">
+                        <div class="page">
+                            <table class="main_table">
+                                <tr>
+                                    <th>Name</th>
+                                </tr>
+                                <tr>
+                                    <td><span t-field="o.name"></span></td>
+                                </tr>
+                        </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <template id="import_data.report_custom_sale_order_header_footer">
+            <t t-call="import_data.report_custom_sale_order_header"/>
+            <t t-raw="0"/>
+            <t t-call="import_data.report_custom_sale_order_footer"/>
+        </template>
+
+
+        <template id="report_custom_sale_order_header">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="header">
+                        <div class="row">
+                            <table class="header_table">
+                                <tr >
+                                    <td>
+                                    <p t-field="o.partner_id.image" t-field-options='{"widget":"image"}'>
+                                    <h1>HEADER</h1>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <h1 style="text-align:center;">ADDRESS</h1>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_custom_sale_order_footer">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="footer">
+                            <h1>THIS IS FOOTER</h1>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+
+    </data>
+</openerp>

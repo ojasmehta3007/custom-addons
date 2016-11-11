@@ -1,0 +1,14 @@
+<openerp>
+    <data>
+        <menuitem name="Only Wizard" id="menu_only_wizard"/>
+        <!--student menu-->
+
+        <menuitem name="Student Records " action="action_student_management" id="menu_students_records"
+                  parent="menu_only_wizard"/>
+        <!--subject menu-->
+        <menuitem name="Create/View Subjects" action='action_subject_management' id="menu_subject_records" parent="menu_only_wizard"/>
+        <!--marks menu-->
+        <menuitem name="View Marks" action='action_marks1_management' id="menu_view_marks1"
+                  parent="menu_only_wizard"/>
+    </data>
+</openerp>

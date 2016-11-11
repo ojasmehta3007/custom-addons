@@ -1,0 +1,83 @@
+<openerp>
+    <data>
+
+
+
+        <record id="view_subject_tree" model="ir.ui.view">
+            <field name="name">subject.tree</field>
+            <field name="model">subject.info</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="student">
+
+
+                    <field name = 'select_student_name'/>
+
+
+                <field name = 'phy'/>
+                <field name = 'chem'/>
+                    <field name = 'percent'/>
+
+                </tree>
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+
+
+        <record id="subject_info_form_view" model="ir.ui.view">
+            <field name="name">subject_info.teacher.form</field>
+            <field name="model">subject.info</field>
+            <field name="arch" type="xml">
+                <form string="subject">
+                    <header>
+
+                       <button string="get sal" type="action" name="%(action_make_graded)d"/>
+
+
+                    </header>
+
+              <group>
+                <field name = 'select_student_name'/>
+
+
+                <field name = 'phy'/>
+                <field name = 'chem'/>
+                    <field name = 'percent'/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+
+
+         <record id="action_subject" model="ir.actions.act_window">
+            <field name="name">action.student_info</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">subject.info</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="view_id" ref="student_info_form_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+
+                </p>
+                <p>
+                Odoo will help you efficiently handle School Management.
+                </p>
+             </field>
+        </record>
+
+        <menuitem name = "subject_info" action="action_subject" id="subject_info_action1"
+            parent="mrp.menu_mrp_manufacturing"/>
+
+
+    </data>
+</openerp>

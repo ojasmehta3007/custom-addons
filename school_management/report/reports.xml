@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report id="file1"
+                model="student"
+                string="Template 1"
+                report_type="qweb-pdf"
+                name="school_management.template1"
+                file="school_management.template1"
+                menu = "True"
+        />
+
+        <report id="file2"
+                model="student"
+                string="Template2"
+                report_type="qweb-pdf"
+                name="school_management.template_student"
+                file="school_management.template_student"
+                menu="True"
+            />
+    </data>
+</openerp>

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+         <record id="employee_hr" model="ir.ui.view">
+            <field name="name">hr_employee</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name="mobile_phone" position="after">
+                   <field name="state"/>
+                </field>
+            </field>
+        </record>
+
+         <!--<record id="employee_hr_tree" model="ir.ui.view">-->
+            <!--<field name="name">hr_employee_tree</field>-->
+            <!--<field name="model">hr.employee</field>-->
+            <!--<field name="inherit_id" ref="hr.view_employee_form"/>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<field name="mobile_phone" position="after">-->
+                   <!--<field name="state"/>-->
+                <!--</field>-->
+            <!--</field>-->
+        <!--</record>-->
+
+         <record id="employee_hr_action" model="ir.actions.act_window">
+            <field name="name">hr_employee_action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_student_filter"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a employee
+                </p>
+                <p>
+                    Odoo will help you
+                </p>
+            </field>
+        </record>
+
+         <record id="employee_new_action" model="ir.actions.act_window">
+            <field name="name">hr_employee_action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee</field>
+             <field name="domain">[('state','=','new')]</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_student_filter"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a employee
+                </p>
+            </field>
+        </record>
+
+        <record id="employee_probation_action" model="ir.actions.act_window">
+            <field name="name">hr_employee_action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee</field>
+            <field name="domain">[('state','=','probation')]</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_student_filter"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a employee
+                </p>
+            </field>
+        </record>
+
+        <record id="employee_confirmed_action" model="ir.actions.act_window">
+            <field name="name">hr_employee_action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee</field>
+            <field name="domain">[('state','=','confirmed')]</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_student_filter"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a employee
+                </p>
+            </field>
+        </record>
+
+        <record id="employee_terminated_action" model="ir.actions.act_window">
+            <field name="name">hr_employee_action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee</field>
+            <field name="domain">[('state','=','terminated')]</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_student_filter"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a employee
+                </p>
+            </field>
+        </record>
+
+        <record id="employee_resigned_action" model="ir.actions.act_window">
+            <field name="name">hr_employee_action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee</field>
+            <field name="domain">[('state','=','resigned')]</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_student_filter"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a employee
+                </p>
+            </field>
+        </record>
+
+
+
+        <menuitem name="Employee Status" id="Employee_status" parent="hr.menu_hr_root" action="employee_hr_action"/>
+        <menuitem name="New" id="new_employee" parent="Employee_status" action="employee_new_action"/>
+        <menuitem name="Probation" id="probation_employee" parent="Employee_status" action="employee_probation_action"/>
+        <menuitem name="Comfirmed" id="Comfirmed_employee" parent="Employee_status" action="employee_confirmed_action"/>
+        <menuitem name="Terminated" id="Terminated_employee" parent="Employee_status" action="employee_terminated_action"/>
+        <menuitem name="Resigned" id="Resigned_employee" parent="Employee_status" action="employee_resigned_action"/>
+
+
+        <!--class employee ends-->
+
+
+        <!--sale order starts-->
+
+
+
+        <record id="sale_search_view" model="ir.ui.view">
+            <field name="name">sale.search</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <search string="Search Sales Order">
+                    <filter string="Paid" name="paid_sale" domain="[('invoice_status','=','invoiced')]"/>
+                    <!--<group string="Group By">-->
+                        <!--<filter string="classification" name="classification" domain="[]" context="{'group_by':'classification_id'}"/>-->
+                    <!--</group>-->
+                </search>
+            </field>
+        </record>
+
+                             <!--sale wizard starts-->
+
+        <record id="sale_order_custom_wizard" model="ir.ui.view">
+            <field name="name">sale_custom</field>
+            <field name="model">sale.order.cust</field>
+            <field name="arch" type="xml">
+                <form string="Custom">
+                    <sheet>
+                    <button name="insert_wiz" string="Create Line" type="object"/>
+                    <group>
+                        <field name="product"/>
+                        <field name="qty"/>
+                        <field name="unit_price"/>
+                    </group>
+                    </sheet>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_wizard_cust" model="ir.actions.act_window">
+            <field name="name">action_wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.cust</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="sale_order_custom_wizard"/>
+            <field name="target">new</field>
+            <field name="multi">True</field>
+        </record>
+
+                                <!--sale wizard ends-->
+
+        <record id="sale_order_custom" model="ir.ui.view">
+            <field name="name">sale_order_custom</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+
+
+               <header>
+                    <button name="%(final_exam.action_wizard_cust)d" type="action" string="Create Sale Order Line" />
+                </header>
+                <xpath expr="//field[@name='amount_untaxed']" position="after">
+                    <field name="total_weight"/>
+                    <field name="is_required" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='client_order_ref']" position="attributes">
+                    <attribute name="attrs">{'required':[('is_required','=',True)]}</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']" position="attributes">
+                    <attribute name="attrs">{'readonly':True}</attribute>
+                </xpath>
+
+                <xpath expr="//tree/field[@name='product_id']" position="after">
+                    <field name="product_type"/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <menuitem name="Sales"
+            id="base.menu_base_partner"
+            groups="final_exam.access_sale_order" sequence="6"/>
+
+
+
+
+
+        <!--sale order ends-->
+
+
+        <!--purchase order line-->
+
+        <record id="purchase_order_custom" model="ir.ui.view">
+            <field name="name">purchase_order_custom</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+
+                 <!--<xpath expr="//notebook/page[@name='Products']/form/sheet/group/group" position="after">-->
+                    <!--<field name="product_type"/>-->
+                <!--</xpath>-->
+                <xpath expr="//tree/field[@name='product_id']" position="after">
+                    <field name="product_type"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!--product template-->
+
+        <record id="product_line_custom" model="ir.ui.view">
+            <field name="name">product_template_custom</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+
+                 <xpath expr="//tree/field[@name='product_id']" position="attributes">
+                    <attribute name="domain">[('type','=','product')]</attribute>
+                </xpath>
+            </field>
+        </record>
+
+<!--purchase ends-->
+
+
+
+
+
+
+        </data>
+    </openerp>

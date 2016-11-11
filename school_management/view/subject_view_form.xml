@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+        <record id="view_subject_tree" model="ir.ui.view">
+            <field name="name">subject.tree</field>
+            <field name="model">subject</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="subject">
+                    <field name="subject"/>
+                    <field name="subject1"/>
+                    <field name="subject2"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_subject_form" model="ir.ui.view">
+            <field name="name">subject.form</field>
+            <field name="model">subject</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="subject">
+                    <sheet>
+                        <group>
+                            <field name="subject" string="Title :"/>
+                            <field name="subject1" string="Physics:"/>
+                            <field name="subject2" string="Chemistry:"/>
+                            <field name="subject3" string="Maths:"/>
+                            <field name="percentage" string="Percentage"/>
+                            <field name="choose_teacher" string="Choose Teacher"/>
+                            <field name="select_student" string="Select Student"/>
+                            <group>
+                                    <field name="teacher_expense" string="Teacher Expense"/>
+                                    <field name="tution_fees" string="tution Fees : "/>
+                                    <field name="travel_expense" string="Travel Expense: "/>
+                            </group>
+                            <!--<button name="calculation" string="Calculate Teacher Expense" type="object"/>-->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--<record id="view_subject_filter" model="ir.ui.view">-->
+            <!--<field name="name">subject.select</field>-->
+            <!--<field name="model">subject</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<search string="Search teacher">-->
+                    <!--<field name="name" string="Name"/>-->
+               <!--</search>-->
+            <!--</field>-->
+        <!--</record>-->
+
+        <record id="action_subject_management" model="ir.actions.act_window">
+            <field name="name">subject</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">subject</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_teacher_filter"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a Subject
+                </p><p>
+                    I will Help You To Create Your Subject.
+                </p>
+            </field>
+        </record>
+
+
+
+
+
+       <!-- <menuitem name="School" id="main_menu_school" parent="school_management.menu_school_management"/> -->
+        <menuitem name="Subjects" id="menu_subjects" parent="school_management.menu_school_management"/>
+
+    <!--    <menuitem name="Teachers" id="menu_teachers" parent="school_management.menu_school_management"/>
+        <menuitem name = "teach" id="menu_teach" parent="menu_teachers" /> -->
+        <menuitem name="View Subjects" action='action_subject_management' id="menu_subject_records" parent="menu_subjects"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+student123,Student,result_management.model_student,student_user_grp,1,0,0,0
+marks132,Marks,result_management.model_marks,student_user_grp,1,0,0,0

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_marks_tree" model="ir.ui.view">
+            <field name="name">marks.tree</field>
+            <field name="model">marks</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="marks">
+                    <!--<field name="student_name_ref"/>-->
+                    <field name="subject_name_ref"/>
+                    <field name="marks_of_student"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_marks_form" model="ir.ui.view">
+            <field name="name">marks.form</field>
+            <field name="model">marks</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="marks">
+                    <sheet>
+                        <group>
+                            <!--<field name="student_name_ref" string="Student Name Ref:"/>-->
+                            <field name="subject_name_ref" string="Subject Name Ref:"/>
+                            <field name="marks_of_student" string="Marks of Student :"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_marks_management" model="ir.actions.act_window">
+            <field name="name">marks</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">marks</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a Marks in Results Management
+                </p>
+                <p>
+                    Odoo will help you efficiently handle School Management.
+                </p>
+            </field>
+        </record>
+    </data>
+</openerp>

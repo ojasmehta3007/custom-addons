@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <menuitem name="Context" id="Context_passing_id"/>
+
+         <record id="view_adding_tree" model="ir.ui.view">
+            <field name="name">adding.tree</field>
+            <field name="model">adding</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="adding">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_adding_form" model="ir.ui.view">
+            <field name="name">adding.form</field>
+            <field name="model">adding</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="adding">
+                   <sheet>
+                       <button name="my" string="Submit" type="object"/>
+                       <group>
+                           <field name="name"/>
+                           <field name="address"/>
+                       </group>
+                   </sheet>
+                </form>
+            </field>
+        </record>
+
+         <record id="action_adding_management" model="ir.actions.act_window">
+            <field name="name">adding</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">adding</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Context Passing
+                </p>
+                <p>
+                    Odoo Context
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Context Pass" id="Pass_context" parent="Context_passing_id" action="action_adding_management"/>
+
+        <!--1st class ends-->
+
+
+        <record id="view_mix_tree" model="ir.ui.view">
+            <field name="name">mix.tree</field>
+            <field name="model">mix</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="mix">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_mix_form" model="ir.ui.view">
+            <field name="name">mix.form</field>
+            <field name="model">mix</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="mix">
+                   <sheet>
+                       <group>
+                           <field name="name"/>
+                           <field name="address"/>
+
+                       </group>
+                   </sheet>
+                </form>
+            </field>
+        </record>
+
+         <record id="action_mix_management" model="ir.actions.act_window">
+            <field name="name">mix</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mix</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Context Passing
+                </p>
+                <p>
+                    Odoo Context
+                </p>
+            </field>
+        </record>
+
+
+
+        <menuitem name="Context Pass 2" id="Pass_context_2" parent="Context_passing_id" action="action_mix_management"/>
+
+        </data>
+    </openerp>

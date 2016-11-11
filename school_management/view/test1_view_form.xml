@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_priority_tree" model="ir.ui.view">
+            <field name="name">res.partner.tree</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="Contacts">
+                    <field name="priority_partner"/>
+                    <field name="registration_date"/>
+                    <field name="liability_card"/>
+                </tree>
+            </field>
+        </record>
+
+       <record model="ir.ui.view" id="view_priority_graph">
+            <field name="name">res.partner.graph</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <graph string="Graph View Res Partner">
+                    <field name="priority_partner"/>
+                    <field name="liability_card"/>
+                </graph>
+            </field>
+        </record>
+
+        <!--<record model="ir.ui.view" id="view_priority_pivot">-->
+            <!--<field name="name">res.partner.pivot</field>-->
+            <!--<field name="model">res.partner</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<pivot string="Graph View PIVOT">-->
+                    <!--<field name="priority_partner"/>-->
+                    <!--<field name="liability_card"/>-->
+                <!--</pivot>-->
+            <!--</field>-->
+        <!--</record>-->
+
+
+
+        <record id="view_priority_filter" model="ir.ui.view">
+            <field name="name">res.partner.select</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <search string="Seacrch priority Partner">
+                    <field name="priority_partner" string="Priority partners"/>
+                    <field name="registration_date"/>
+                    <field name="liability_card"/>
+                </search>
+            </field>
+        </record>
+
+
+        <!--<record id="view_priority_form" model="ir.ui.view">-->
+            <!--<field name="name">priority.form</field>-->
+            <!--<field name="model">res.partner</field>-->
+            <!--<field name="inherit_id" ref="base.view_partner_tree"/>-->
+            <!--<field name="priority">4</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<form string="priority_partner">-->
+                    <!--<sheet>-->
+                        <!--<group>-->
+                            <!--<field name="priority_partner"/>-->
+                            <!--<field name="registration_date"/>-->
+                        <!--</group>-->
+                    <!--</sheet>-->
+                <!--</form>-->
+            <!--</field>-->
+        <!--</record>-->
+
+        <record id="test1_inherit" model="ir.ui.view">
+            <field name="name">base.res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <label for="street" position="before">
+                    <field name="priority_partner" string="Priority Partner:"/>
+                    <field name="registration_date" string="Registration Date :" attrs="{'invisible':[('priority_partner','=',False)]}"/>
+                    <field name="liability_card" string="Liability Card Number :" attrs="{'required':[('priority_partner','=',True)]}"/>
+                </label>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="custom_module_kanban_view">
+            <field name="name">custom.module.kanban</field>
+            <field name="model">res.partner</field>
+            <field name="type">kanban</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <!--list of field to be loaded -->
+                    <field name="priority_partner" />
+                    <field name="liability_card" />
+                    <templates>
+                    <t t-name="kanban-box">
+                            <div class="oe_product_vignette">
+                                <a type="open">
+                                    <img class="oe_kanban_image"
+                                        t-att-src="kanban_image('res.partner', 'image', record.id.value)" />
+                                </a>
+                                <div class="oe_product_desc">
+                                    <h4>
+                                        <a type="edit">
+                                            <field name="priority_partner"></field>
+                                        </a>
+                                    </h4>
+                                    <ul>
+                                        <li><field name="display_name"/></li>
+                                        <li> <field name="email"/></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+         <record id="action_priority" model="ir.actions.act_window">
+            <field name="name">priority</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <!--<field name="domain">[('priority_partner','=',True)]</field>-->
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban,graph</field>
+             <!--<field name="Search_view_id" ref="view_partner_tree_filter"/>-->
+            <!--<field name="search_view_id" ref="view_teacher_filter"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Hello
+                </p><p>
+                    Odoo.
+                </p>
+            </field>
+        </record>
+
+        <record id="action_custom_modul_form" model="ir.actions.act_window">
+            <field name="name">Title custom module</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,graph</field>
+        </record>
+
+
+
+        <!--<menuitem name="Priority Partners" id="menu_priority_partners" parent="menu_customer_liability"/>-->
+        <menuitem name="Piority Partners" id="menu_priority_partners_child" action="action_priority" parent="menu_customer_liability"/>
+        <menuitem name="Piority Partners kanban" id="menu_kanban_priority_partners_child" action="action_custom_modul_form" parent="menu_priority_partners_child"/>
+
+
+    </data>
+</openerp>
+
+
+
+

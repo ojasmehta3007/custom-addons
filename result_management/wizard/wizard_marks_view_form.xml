@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="wizard_view_form" model="ir.ui.view">
+            <field name="name">View Results</field>
+            <field name="model">wizard.details</field>
+            <field name="arch" type="xml">
+                <form string="wizard.details">
+                    <group>
+                        <field name="name"/>
+                        <field name="percentage"/>
+                        <field name="student_marks_rel_new">
+                            <tree>
+                                <field name = "subject_name_ref"/>
+                                <field name = "marks_of_student"/>
+                            </tree>
+                        </field>
+                    </group>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_wizard" model="ir.actions.act_window">
+            <field name="name">View results</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wizard.details</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="wizard_view_form"/>
+            <field name="target">new</field>
+            <field name="multi">True</field>
+        </record>
+
+       <record model="ir.values" id="wizard_values">
+            <field name="model_id" ref="model_student"/>
+            <field name="name">View Results</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_wizard'))" />
+            <field name="key">action</field>
+            <field name="model">student</field>
+       </record>
+
+    </data>
+</openerp>

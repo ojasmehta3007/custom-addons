@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_teacher_tree" model="ir.ui.view">
+            <field name="name">teacher.tree</field>
+            <field name="model">teacher</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="teacher">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_teacher_form" model="ir.ui.view">
+            <field name="name">teacher.form</field>
+            <field name="model">teacher</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="teacher">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_teacher_management" model="ir.actions.act_window">
+            <field name="name">teacher</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">teacher</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a Teacher in Results Management
+                </p>
+                <p>
+                    Odoo will help you efficiently handle School Management.
+                </p>
+            </field>
+        </record>
+    </data>
+</openerp>

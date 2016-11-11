@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <template id="template1">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <style>
+                                table{
+                                width:100%
+                                }
+
+                            </style>
+                            <table>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Address</th>
+
+                                </tr>
+                                <tr>
+                                    <td><span t-field="o.name"></span></td>
+                                    <td><span t-field="o.address"></span> </td>
+                                </tr>
+                        </table>
+
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>

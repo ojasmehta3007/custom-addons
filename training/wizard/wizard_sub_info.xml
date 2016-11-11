@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+     <record id="view_wizard_sub_info_tree" model="ir.ui.view">
+            <field name="name">wizard_sub_info.tree</field>
+            <field name="model">wizard.sub.info</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="wizard_sub_info">
+
+
+
+                <field name ='chem'/>
+                    <field name ='phy'/>
+                    <field name ='percent'/>
+
+
+                </tree>
+            </field>
+        </record>
+
+
+</data>
+  </openerp>

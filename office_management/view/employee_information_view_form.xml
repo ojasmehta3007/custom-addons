@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="assets_backend" name="website assets for my module" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/office_management/static/src/css/mycss.css"/>
+            </xpath>
+        </template>
+        <menuitem name="Office Management"
+            id="office_management.menu_office_management"/>
+
+        <!-- Tree View -->
+
+
+        <record id="view_employee_information_tree" model="ir.ui.view">
+            <field name="name">employee_information.tree</field>
+            <field name="model">employee.information</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="Employee_Information">
+                    <field name="emp_id"/>
+                    <field name="emp_name"/>
+                    <field name="city"/>
+                    <field name="pincode"/>
+                    <field name="working_address"/>
+                    <field name="work_email"/>
+                    <field name="work_phone"/>
+                    <field name="work_mobile"/>
+                    <field name="office_location"/>
+                    <field name="company_code"/>
+                    <field name="nationality"/>
+                    <field name="education_level"/>
+                    <field name="college_name"/>
+                    <field name="birth"/>
+                    <field name="date_of_birth"/>
+                </tree>
+            </field>
+        </record>
+
+         <!-- Form View -->
+
+        <record id="view_employee_information_form" model="ir.ui.view">
+            <field name="name">employee_information.form</field>
+            <field name="model">employee.information</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="employee_information">
+                    <sheet>
+                        <header>
+                             <button name="B2" string="Search Employee" type="submit" />
+                             <button type="submit" name="B1" string="Hit ME TOO" onclick="window.location.href='http://google.com'" widget="url"/>
+                        </header>
+                       <group cols="2" colspan="2">
+                            <group colspan="2">
+                               <field name="emp_id" string="Employee ID :" />
+                               <field name="emp_name" string="Employee Name :" />
+                            </group>
+                            <group colspan="2">
+                                <field name="city" string="City :" />
+                                <field name="pincode" string="Pincode :" />
+                            </group>
+                        </group>
+                        <notebook>
+                                    <page string="Contact Information">
+                                        <group>
+                                            <field name="working_address" string="Working Address :" />
+                                            <field name="work_email" string="Work Email :" />
+                                            <field name="work_phone" string="Work Phone:" />
+                                            <field name="work_mobile" string="Work Mobile:" />
+                                            <field name="office_location" string="Office Location :" />
+                                            <field name="company_code" string="Company Code :" />
+                                        </group>
+                                    </page>
+                                    <page string="Personal Information">
+                                      <group>
+                                        <field name="nationality" string="Nationality :" />
+                                        <field name="education_level" string="Education Level :" />
+                                        <field name="college_name" string="College Name :" />
+                                        <field name="birth" string="Birth :" />
+                                        <field name="date_of_birth" string="Date Of Birth :" />
+                                       </group>
+                                    </page>
+                            </notebook>
+
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+
+        <record id="action_employee_information_management" model="ir.actions.act_window">
+            <field name="name">employee_information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">employee.information</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_student_filter"/> -->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a Employee Information
+
+                </p><p>
+                    Odoo will help you efficiently handle Office Management.
+                </p>
+            </field>
+        </record>
+
+<!--        <record id="action_student_tree" model="ir.actions.act_window.view">
+            <field name="sequence">1</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_student_tree"/>
+            <field name="act_window_id" ref="action_school_management"/>
+        </record>
+
+        <record id="action_student_form" model="ir.actions.act_window.view">
+            <field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_student_form"/>
+            <field name="act_window_id" ref="action_school_management"/>
+        </record>-->
+
+
+        <menuitem name="Employee Master" id="menu_employee" parent="office_management.menu_office_management"/>
+
+        <menuitem name="Employee Records " action='action_employee_information_management' id="menu_employee_records" parent="menu_employee"/>
+
+
+
+
+    </data>
+</openerp>

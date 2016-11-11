@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id ="result_management_grp" model ="ir.module.category">
+            <field name="name">Result Management</field>
+        </record>
+
+        <record id="student_user_grp" model="res.groups">
+            <field name="name">student</field>
+            <field name="category_id" ref="result_management_grp"/>
+        </record>
+
+
+        <record model="ir.rule" id="stud_group_access">
+            <field name="name">student</field>
+            <field name="model_id" ref="model_student"/>
+            <field name="domain_force">[('user_id','=',user.id)]</field>
+        </record>
+
+    </data>
+</openerp>
