@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--==============================wizard task=========================-->
+        <record id="purchase_order_wizard_form" model="ir.ui.view">
+                    <field name="name">sale.order.custom</field>
+                    <field name="model">purchase.order.custom</field>
+                    <field name="arch" type="xml">
+                        <form string="Purchase Order">
+                            <sheet>
+                                <button name="transfer_order" string="Merge Orders" type="object" />
+                            <group>
+                                <field name="local"/>
+                            </group>
+                            </sheet>
+                       </form>
+                    </field>
+                </record>
+
+                <record id="purchase_order_wizard_action" model="ir.actions.act_window">
+                    <field name="name">Merge Orders</field>
+                    <field name="type">ir.actions.act_window</field>
+                    <field name="res_model">purchase.order.custom</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">form</field>
+                    <field name="view_id" ref="purchase_order_wizard_form"/>
+                    <field name="target">new</field>
+                    <field name="multi">True</field>
+                </record>
+
+        <record model="ir.values" id="pruchase_order_custom_action">
+            <field name="model_id" ref="model_purchase_order_custom"/>
+            <field name="name">Merger Orders</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('purchase_order_wizard_action'))" />
+            <field name="key">action</field>
+            <field name="model">purchase.order</field>
+       </record>
+                        <!--=====================wizard ends======================-->
+        <record id="taskinventory_custom_form" model="ir.ui.view">
+            <field name="name">Task Inventory Custom</field>
+            <field name="model">taskinventory.custom</field>
+            <field name="arch" type="xml">
+                <form string="Bulk Transfer">
+                    <sheet>
+                        <button name="bulktransfer" type="object" string="Bulk Transfer"/>
+                    <group>
+                        <field name="local"/>
+                    </group>
+                    </sheet>
+               </form>
+            </field>
+        </record>
+
+        <record id="taskinventory_custom_action" model="ir.actions.act_window">
+            <field name="name">Bulk Transfer</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">taskinventory.custom</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="taskinventory_custom_form"/>
+            <field name="target">new</field>
+            <field name="multi">True</field>
+        </record>
+
+        <record model="ir.values" id="task_inventory_custom_values">
+            <field name="model_id" ref="model_taskinventory_custom" />
+            <field name="name">Bulk Transfer</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('taskinventory_custom_action'))" />
+            <field name="key">action</field>
+            <field name="model">stock.picking</field>
+        </record>
+
+        </data>
+    </openerp>

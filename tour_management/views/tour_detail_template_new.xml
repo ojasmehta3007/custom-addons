@@ -1,0 +1,749 @@
+<openerp>
+    <data>
+        <!-- Header Links -->
+        <template id="reg_form_box" inherit_id="website.assets_frontend" name="Header links">
+            <xpath expr="." position="inside">
+                <t t-call="web.jqueryui_conflict">
+                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+                    <link rel='stylesheet' href='/tour_management/static/src/css/template.css'/>
+                    <script src="/tour_management/static/src/js/validate.js" type="text/javascript"></script>
+                    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+                    <link rel='stylesheet' href='/tour_management/static/src/css/banner_slider/thumbnail-slider.css'/>
+                    <script src="/tour_management/static/src/css/banner_slider/thumbnail-slider.js" type="text/javascript"></script>
+
+                    <link rel='stylesheet' href='/tour_management/static/src/css/product_slider/thumbnail-slider1.css'/>
+                    <link rel='stylesheet' href='/tour_management/static/src/css/product_slider/thumbs2.css'/>
+                    <script src="/tour_management/static/src/css/product_slider/thumbnail-slider1.js"></script>
+                </t>
+            </xpath>
+        </template>
+
+        <!--Menubar  replacement of default with custom menu-->
+        <template id="layout_header_updated" inherit_id="website.layout" customize_show="True" name="Temp">
+            <xpath expr="//div[@class='container']" position="replace">
+
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <t t-if="company_id">
+                                <a class="navbar-brand" href="/page/homepage"><span t-esc="company_id.name"/></a>
+                            </t>
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav">
+                                <li><a href="/page/homepage">Home</a></li>
+                                <li><a href="/tour">Tours</a></li>
+                                <li><a href="/deals">Deals</a></li>
+                                <li><a href="/page/contactus">Contact</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="/registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                                <li class="dropdown" t-ignore="true">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <b>
+                                            <span t-esc="user_id.name"/>
+                                            <span class="caret"></span>
+                                        </b>
+                                    </a>
+                                    <ul class="dropdown-menu js_usermenu" role="menu">
+                                        <li><a href="/web" role="menuitem">My Account</a></li>
+                                        <li class="divider"/>
+                                        <li><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </xpath>
+
+        </template>
+
+        <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+        <!-- Homepage -->
+        <template id="tour_detail_temp" inherit_id="website.homepage">
+            <xpath expr="//div" position="inside">
+                <body>
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                            <li data-target="#myCarousel" data-slide-to="3"></li>
+                            <li data-target="#myCarousel" data-slide-to="4"></li>
+                            <li data-target="#myCarousel" data-slide-to="5"></li>
+                            <li data-target="#myCarousel" data-slide-to="6"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active"><img src="/tour_management/static/src/img/banner/b2.jpg">
+
+                            </img>
+                            </div>
+                            <div class="item"><img src="/tour_management/static/src/img/banner/b3.jpg"/></div>
+                            <div class="item"><img src="/tour_management/static/src/img/banner/b4.jpg"/></div>
+                            <div class="item"><img src="/tour_management/static/src/img/banner/b5.jpg"/></div>
+                            <div class="item"><img src="/tour_management/static/src/img/banner/b6.jpg"/></div>
+                            <div class="item"><img src="/tour_management/static/src/img/banner/b7.jpg"/></div>
+                            <div class="item"><img src="/tour_management/static/src/img/banner/b8.jpg"/></div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+
+                    <!--<div id="thumbnail-slider">-->
+                    <!--<div class="inner">-->
+                    <!--<ul>-->
+                    <!--<li><a class="thumb" href="/tour_management/static/src/img/banner/b2.jpg"></a></li>-->
+                    <!--<li><a class="thumb" href="/tour_management/static/src/img/banner/b3.jpg"></a></li>-->
+                    <!--<li><a class="thumb" href="/tour_management/static/src/img/banner/b4.jpg"></a></li>-->
+                    <!--<li><a class="thumb" href="/tour_management/static/src/img/banner/b5.jpg"></a></li>-->
+                    <!--<li><a class="thumb" href="/tour_management/static/src/img/banner/b6.jpg"></a></li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                    <div style="padding:100px 0;background:#333;">
+                        <div id="thumbnail-slider1">
+                            <div class="inner">
+                                <ul>
+                                    <t t-foreach="res" t-as="v" >
+                                        <a t-att-href="keep('/tour',category = v.name)">
+                                            <li>
+                                                <img t-att-src="'data:image/png;base64,%s' % v.image_medium" class="img-responsive oe_product_image" width="100%"/>
+                                            </li>
+                                        </a>
+                                    </t>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container" id="tour_detail">
+                        <div class="col-sm-12 text-center">
+                            <h2><span>Category</span></h2>
+                        </div>
+                        <div class="row">
+                            <t t-foreach="res" t-as="v" >
+                                <div class="col-sm-3">
+                                    <a t-att-href="keep('/tour',category = v.name)">
+                                        <div class="panel panel-primary">
+                                            <div class="panel-heading"><span t-field="v.name"/></div>
+                                            <div class="panel-body"><img t-att-src="'data:image/png;base64,%s' % v.image_medium" class="img-responsive oe_product_image" width="100%" alt="Image"/></div>
+                                            <div class="panel-footer"><span>Choose this group</span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+
+                    <!--<div class="container">-->
+                        <!--<div class="grow pic">-->
+                            <!--<img src="/tour_management/static/src/img/banner/b1.jpg" alt="portrait"/>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="container">-->
+                        <!--<div class="zoomin1 frame">-->
+                            <!--<img src="/tour_management/static/src/img/banner/b1.jpg" alt="portrait"/>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <div class="container" id="tour_detail">
+                        <div class="col-sm-12 text-center">
+                            <h2><span>Videos</span></h2>
+                        </div>
+                        <div class="container">
+                            <div class="col-sm-4">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/_E2CNZIlVIg"></iframe>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/BPyRJ1CW5vo"></iframe>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/kJOP1vEjX0s"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </body>
+            </xpath>
+        </template>
+
+        <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+        <!--Tours template-->
+
+        <template id="id_tour_page_template" name="Tour">
+
+            <t t-call="website.layout">
+                <div class="container" id="search_bar">
+                    <div class="col-sm-12 oe_right">
+                        <div class="search_tab">
+                            <t t-call="tour_management.tour_website_search"><t t-set="search_class"></t></t>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container" id="tour_detail">
+                    <div class="row">
+                        <t t-foreach="res" t-as="v" >
+                            <div class="col-sm-3">
+                                <a t-att-href="keep('/tour/detail', name = v.name)">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading"><span t-field="v.name"/></div>
+                                        <div class="panel-body oe_product_image"><img t-att-src="'data:image/png;base64,%s' % v.image_medium" width="100%" height="60%" class="img-responsive"/></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+        <!--Tour detail  template-->
+        <template id="id_tour_detail_temp" name="Tour Detail">
+
+            <t t-call="website.layout">
+                <t t-foreach="res" t-as="v">
+
+                    <div class="container" id="tour_detail">
+                        <div classs="col-lg-12" style="margin-bottom:10px;">
+                            <div class="col-sm-4 oe_product_image">
+                                <!--<span t-field="v.image_medium" t-field-options='{"widget": "image", "class": "img-rounded"}'/>-->
+                                <img t-att-src="'data:image/png;base64,%s' % v.image_medium" class="img-rounded img-responsive" width="100%" height="100%"/>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tr>
+                                            <td><h3><strong>Name of Tour</strong></h3></td>
+                                            <td><h3><span t-field="v.name"/></h3></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Tour Type</strong></td>
+                                            <td><span t-field="v.tour_type"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Tour Code</strong></td>
+                                            <td><span t-field="v.tour_code"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>No of Nights</strong></td>
+                                            <td><span t-field="v.no_of_nights"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Tour Date</strong></td>
+                                            <td><span t-field="v.start_date"/></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-4"><a t-att-href="keep('/tour_`',tour_id = v.id, name = v.name)"><button type="submit" class="btn btn-primary">Book Tour</button></a></div>
+                                    <div class="col-md-4"><a t-att-href="keep('/tour_login',tour_id = v.id, name = v.name)"><button type="submit" class="btn btn-primary">Cancel Tour</button></a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="col-lg-4">
+                                <strong><h2>About This Tour</h2></strong><br/>
+                                <p><span t-field="v.note"/></p>
+                            </div>
+                            <div class="col-lg-8">
+                                <h2><span class="title">Iternary</span></h2>
+                                <div class="table-responsive" id="table_itenary">
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>Day</th>
+                                                <th>Iteranry</th>
+                                                <th>Night Hold</th>
+                                                <th>Hotel</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="v.itenary" t-as="itrny">
+                                                <tr>
+                                                    <td><span t-field="itrny.day"/></td>
+                                                    <td><span t-field="itrny.itenary"/></td>
+                                                    <td><span t-field="itrny.night_hold"/></td>
+                                                    <td><t t-foreach="itrny.hotel_detail" t-as="hotel"><span t-field="hotel.name"/></t></td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+        <!--Search template-->
+        <template id="tour_website_search" name="Search">
+            <form t-att-action="keep2('/tour', search=0)" t-att-class="search_class">
+
+                <t t-if="attrib_values">
+                    <t t-foreach="attrib_values" t-as="a">
+                        <input type="hidden" name="attrib" t-att-value="'%s-%s' % (a[0], a[1])"/>
+                    </t>
+                </t>
+
+                <div class="input-group">
+                    <input type="text" name="search" class="search-query form-control" placeholder="Search..." t-att-value="search"/>
+                    <span class="input-group-btn">
+                        <a class="btn btn-default a-submit"><i class="fa fa-search"/></a>
+                    </span>
+                </div>
+            </form>
+        </template>
+
+        <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+        <!--Login Template-->
+        <template id="id_tour_login_temp" name="Tour Login Detail">
+
+            <t t-call="website.layout">
+
+                <div class="container">
+                    <div id="login_form">
+                        <form class="form-horizontal" role="form" t-att-action="keep('/book_tour')">
+
+                            <input type='text' name='tour_id'  t-att-value="tour_id.id" style="display: none;"/>
+
+                            <div class="form-group">
+                                <label class="control-label"><h2>Login</h2></label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="email">Email:</label>
+                                <div class="col-sm-4">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required="true"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="pwd">Password:</label>
+                                <div class="col-sm-4">
+                                    <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password" required="true"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-4 col-sm-2">
+                                    <!--<div class="checkbox">-->
+                                    <label><input type="checkbox"/> Remember me</label>
+                                    <!--</div>-->
+                                </div>
+                                <div class="col-sm-2">
+                                    <a t-att-href="keep('/forgot_password',tour_id = tour_id.id)">Forgot  Password?</a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-4 col-sm-2">
+                                    <button type="submit" class="btn btn-success">Login</button>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="reset" class="btn btn-danger">Reset</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-4 col-sm-2">
+                                    <a t-att-href="keep('/tour_registration',tour_id = tour_id.id)"><button type="button" class="btn btn-primary">Register</button></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--</div>-->
+            </t>
+        </template>
+
+        <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+        <!--Registration Template-->
+        <template id="id_tour_registration_temp" name="Tour Registration Detail">
+
+            <t t-call="website.layout">
+
+                <div class="container">
+
+                    <form class="form-horizontal" name="registration" role="form" t-att-action="keep('/tour_registration_create', tour_id=tour_id.id)">
+
+                        <input type='text' name='tour_id'  t-att-value="tour_id.id" style="display: none;"/>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-4"><h2>Registration</h2></label>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">Name:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name='name' id="name" placeholder="Enter Full Name" required="true"/>
+                                <div id="name_msg"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" >Gender:</label>
+                            <div class="col-sm-4">
+                                <label class="col-sm-4"><input type="radio" name="gender" value="Male"/>  Male</label>
+                                <label class="col-sm-4"><input type="radio" name="gender" value="Female"/>  Female</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">Phone:</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" id="phone" placeholder="Enter Phone number" name='phone' type="number" required="true"/>
+                            </div>
+                            <div class="col-sm-4" id="phone_msg"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">Email:</label>
+                            <div class="col-sm-4">
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" name='email' required="true" />
+                                <div id="email_msg"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">User Id:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="uid" placeholder="Enter User Id" name='user_id'/>
+                                <div id="uid_msg"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">Password:</label>
+                            <div class="col-sm-4">
+                                <input type="password" class="form-control" id="pass" placeholder="Enter password" name='password' required="true"/>
+                                <div id="pass_msg"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">Confirm Password:</label>
+                            <div class="col-sm-4">
+                                <input type="password" class="form-control" id="cpass" placeholder="Enter Confirm password" name='cpassword' required="true"/>
+                                <div id="cpass_msg"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-4">
+                                <div class="checkbox">
+                                    <label><input type="checkbox"/> Remember me</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-2">
+                                <button type="submit" class="btn btn-primary" onClick="myFunction()">Register</button>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="reset" class="btn btn-danger">Reset</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </t>
+        </template>
+
+
+        <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+        <!--Forgot Password Template-->
+        <template id="id_tour_forgot_password_temp" name="Tour Forgot Password Detail">
+
+            <t t-call="website.layout">
+                <t t-if="warning == 'yes'">
+                    <b>There is no email Found</b>
+                </t>
+                <div class="container">
+                    <form class="form-horizontal" role="form" t-att-action="keep('/tour_forgot_password_create', tour_id = tour_id.id)">
+
+                        <input type='text' name='tour_id'  t-att-value="tour_id.id" style="display: none;"/>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-4 col-sm-offset-1" for="Label"><h2>Forgot Password</h2></label>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="email">Email:</label>
+                            <div class="col-sm-4">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3">
+                                <label><strong>OR</strong></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="user_id">User Id:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="user_id" name="user_id" placeholder="Enter User Id"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="pwd">New Password:</label>
+                            <div class="col-sm-4">
+                                <input type="password" class="form-control" id="pwd" name="password" placeholder="Enter New password"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="pwd">Confirm Password:</label>
+                            <div class="col-sm-4">
+                                <input type="password" class="form-control" id="cpwd" placeholder="Enter Confirm password"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-4">
+                                <label><input type="checkbox"/> Remember me</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-2">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="reset" class="btn btn-danger">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </t>
+        </template>
+
+        <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+        <!--this template is for tour booking for a customer-->
+        <template id="id_tour_booking_temp" name="Tour Booking Detail">
+
+            <t t-call="website.layout">
+                <div class="container">
+                    <script type="text/javascript" src="/tour_management/static/src/js/functions_detail.js"/>
+                    <form class="form-horizontal" role="form" t-att-action="keep('/book_confirm')">
+
+                        <input type='text' name='tour_id'  t-att-value="tour_id.id" style="display: none;"/>
+                        <input type='text' name='cus_id'  t-att-value="cus_id.id" style="display: none;"/>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <td colspan="2"><B><h3> Book Tour </h3></B></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tour Id:</strong></td>
+                                    <td><span t-esc="tour_id.id"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tour Name:</strong></td>
+                                    <td><span t-esc="tour_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Customer Id:</strong></td>
+                                    <td><span t-esc="cus_id.id"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Name:</strong></td>
+                                    <td><span t-esc="cus_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tour Date</strong></td>
+                                    <td><span t-field="tour_id.start_date"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Phone:</strong></td>
+                                    <td><span t-esc="cus_id.phone"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Email:</strong></td>
+                                    <td><span t-esc="cus_id.email"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>No of Adults:</strong></td>
+                                    <td><input type="text" class="form-control no_of_adults" value="0" name="no_of_adults" placeholder="Enter No of Adults" onchange="passenger_detail(this.value,ad=1);"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>No of Childs:</strong></td>
+                                    <td><input type="text" class="form-control no_of_childs" value="0" name="no_of_childs" placeholder="Enter No of Childs" onchange="passenger_detail(this.value,ad=2);"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>No of Infants:</strong></td>
+                                    <td><input type="text" class="form-control no_of_infants" value="0" name="no_of_infants" placeholder="Enter No of Infants" onchange="passenger_detail(this.value,ad=3);"/></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-2">
+                                <button type="submit" class="btn btn-primary">Book</button>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="reset" class="btn btn-danger">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </t>
+        </template>
+
+        <!--this template is for tour booked for a customer-->
+        <template id="id_tour_booking_confirm_temp" name="Tour Booked">
+
+            <t t-call="website.layout">
+
+
+                <div class="container">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <td><strong>Tour Id:</strong></td>
+                                <td><span t-esc="query_id.sequence"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tour Name:</strong></td>
+                                <td><span t-esc="tour_id.name"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Customer Id:</strong></td>
+                                <td><span t-esc="cus_id.id"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Name:</strong></td>
+                                <td><span t-esc="cus_id.name"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tour Date</strong></td>
+                                <td><span t-field="tour_id.start_date"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Phone:</strong></td>
+                                <td><span t-esc="cus_id.phone"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Email:</strong></td>
+                                <td><span t-esc="cus_id.email"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total No of Seats</strong></td>
+                                <td><span t-esc="query_id.no_seats"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-4">
+                            <button type="Cancel" class="btn btn-warning">Cancel Booking</button>
+                        </div>
+                    </div>
+
+                </div>
+            </t>
+        </template>
+
+
+        <template id="id_toor_booked_temp123" name="Tour Booked123">
+
+            <t t-call="website.layout">
+                <t t-foreach="rec" t-as="r" >
+                    <span t-field="r.sequence"/>
+                    <span t-field="r.tour"/>
+                    <a t-att-href="keep_edit_booked_tour('/edit_booked_tour', query_id = r.id)"> <input type="button" name="Edit" value="Edit Tour"/></a>
+                    <br/><br/><br/>
+
+                </t>
+            </t>
+        </template>
+
+        <!--product page to call from default as it is in our template at a specific place-->
+        <!--<template id="shoppage" inherit_id="website_sale.products" name="Shop">-->
+        <!--<xpath expr="//div[@id='wrap']" position="before">-->
+        <!--call the header part of your website-->
+        <!--<t t-call="bista_ic_theme.ic_theme_header"/>-->
+        <!--</xpath>-->
+        <!--<xpath expr="//div[@id='wrap']" position="replace">-->
+        <!--replace the shop product page with our page including the products in our page from shop-->
+        <!--&lt;!&ndash;<div class="oe_structure"/>&ndash;&gt;-->
+        <!--<div class="container products">-->
+        <!--<div class="col-md-12">-->
+        <!--<div class="col-md-2">-->
+        <!--Code for the left panal here in this block-->
+        <!--</div>-->
+        <!--<div class="col-md-8">-->
+        <!--<div class="products_pager">-->
+        <!--<div class="row" style="width: 100%;">-->
+        <!--<t t-call="website_sale.search"><t t-set="search_class">pagination form-inline</t></t>-->
+        <!--<t t-call="website_sale.pricelist_list"/>-->
+        <!--<t t-call="website.pager"/>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class='row'>-->
+        <!--<div class="hidden" id="products_grid_before"></div>-->
+        <!--<div class="col-md-12" id="products_grid">-->
+        <!--<table width="100%">-->
+        <!--<tbody>-->
+        <!--<tr t-ignore="true">-->
+        <!--<td t-foreach="range(0,rows)" t-as="row" t-attf-width="#{100/rows}%"></td>-->
+        <!--</tr>-->
+        <!--<tr t-foreach="bins" t-as="tr_product">-->
+        <!--<t t-foreach="tr_product" t-as="td_product">-->
+        <!--<t t-if="td_product">-->
+        <!--<t t-set="product" t-value="td_product['product']"/>-->
+        <!--<td t-att-colspan="td_product['x'] != 1 and td_product['x']"-->
+        <!--t-att-rowspan="td_product['y'] != 1 and td_product['y']"-->
+        <!--t-attf-class="oe_product_image oe_grid oe-height-#{td_product['y']*2} #{ td_product['class'] }">-->
+
+        <!--<div class="oe_product_image_cart" t-att-data-publish="product.website_published and 'on' or 'off'">-->
+        <!--<t t-set="product_image_big" t-value="td_product['x']+td_product['y'] > 2"/>-->
+        <!--<t t-call="website_sale.products_item"/>-->
+        <!--</div>-->
+
+        <!--</td>-->
+        <!--</t>-->
+        <!--<td t-if="not td_product" class="oe-height-2"/>-->
+        <!--</t>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+        <!--</table>-->
+        <!--<t t-if="not bins">-->
+        <!--<div class="text-center text-muted">-->
+        <!--<h3 class="css_editable_display">No product defined.</h3>-->
+        <!--<t groups="base.group_website_publisher">-->
+        <!--<p groups="base.group_sale_manager">Use the <i>'Content'</i> top menu to create a new product.</p>-->
+        <!--</t>-->
+        <!--</div>-->
+        <!--</t>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="products_pager">-->
+        <!--<t t-call="website.pager"/>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-md-2">-->
+        <!--code for the right panal here in this code-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</xpath>-->
+        <!--</template>-->
+
+    </data>
+</openerp>

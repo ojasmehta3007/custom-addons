@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- tour management city tree view -->
+        <record id="tour_management_hotel_view_tree" model="ir.ui.view">
+            <field name="name">hotel.detail.view.tree</field>
+            <field name="model">hotel.detail</field>
+            <field name="arch" type="xml">
+                <tree string="Hotel">
+                    <field name="name"/>
+                    <field name="priority"/>
+                    <field name="state_id"/>
+                    <field name="city_id"/>
+                    <field name="email"/>
+                    <field name="phone"/>
+                    <field name="fax"/>
+                    <field name="vendor_name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- tour management tour hotel form view -->
+        <record id="tour_management_hotel_view_form" model="ir.ui.view">
+            <field name="name">hotel.detail.view.form</field>
+            <field name="model">hotel.detail</field>
+            <field name="arch" type="xml">
+                <form string="Hotel">
+                    <sheet>
+                        <field name="image" widget="image" nolabel="1" class="oe_left oe_avatar"/>
+                        <div class="oe_title oe_left">
+                            <h1>
+                                <field name="name" default_focus="1" placeholder="Hotel Name" nolabel="1"/>
+                            </h1><br/>
+                            <field name="priority" widget="priority"/>
+                        </div>
+                        <group colspan="4" col="4">
+                            <field name="state_id"/>
+                            <field name="city_id" widget="many2many_tags" context="{'default_state_id': state_id}"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="fax"/>
+                        </group>
+                        <notebook>
+                            <page string="Meal Plan">
+                                <field name="inclusive" nolabel="1"/>
+                            </page>
+                            <page string="Facility">
+                                <field name="facility" nolabel="1"/>
+                            </page>
+                            <page string="Vendor Detail">
+                                <group>
+                                    <field name="vendor_name"/>
+                                    <field name="vendor_phone"/>
+                                </group>
+                            </page>
+                        </notebook>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- tour management hotel action -->
+        <record id="tour_management_hotel_action" model="ir.actions.act_window">
+            <field name="name">Tour Management</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hotel.detail</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="hotel_detail" parent="master_config" name="Hotel Detail" action="tour_management_hotel_action"/>
+
+    </data>
+</openerp>

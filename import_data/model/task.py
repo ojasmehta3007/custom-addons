@@ -35,7 +35,7 @@ class student_student(models.Model):
     total_amount = fields.Integer('Total Amount/Month:')
     is_true = fields.Boolean('is_true',default=True)
     total_amount_due = fields.Integer('Total Amount Due:',compute='calculate_amount_due_total',store=True)
-    for_month = fields.Integer('For months:')
+    for_month = fields.Integer('For months:',compute='count_month')
     standard = fields.Integer('Class:')
     sidd_challenge = fields.One2many('wizard.total.calculate.o2m','sidd_challenge_2','TRY :')
 
@@ -54,12 +54,39 @@ class student_student(models.Model):
             'target': 'new',
         }
 
+    @api.multi
+    def count_month(self):
+        print "INSIDE COUNT MONTH================="
+        print "RECORD=================",self.sidd_challenge
+        print "RECORD=================",len(self.sidd_challenge)
+        self.for_month = len(self.sidd_challenge)
+
+
     @api.model
     def default_get(self, fields_list):
-        print "DEFAULT GET==========================="
+        print "DEFAULT GET===========================",self
+        print "DEFAULT GET===========================",self._context
         res = super(student_student, self).default_get(fields_list)
+        print "PRINTING RES=====================",res
         res.update({'total_amount':500})
+        cus = self.env['wizard.fees.calculate'].custom_function()
+        print "CUSTOM CALLING ================",cus
+        new_cus = self.env['res.partner'].custom_function()
+        print "NEW CUS CALLING===================",new_cus
+        # res = self.update({'total_amount':500})
         return res
+
+    # def name_get(self):
+    #     print "Context"*20,context
+    #     res = super(student_student,self).name_get(cr, uid, ids, context)
+    #     if not len():
+    #         print "LEN NOT FOUND============"
+    #         return []
+    #     res = []
+    #     for name in self.browse(self.cr, self.uid,self.ids,context=context):
+    #         print "CONTEXT====================",self._context
+    #         res.append((name.id,  str(name.name)+" "+str(name.function)))
+    #     return res
 
     @api.multi
     @api.depends('sidd_challenge')
@@ -83,6 +110,8 @@ class wizard_class_fees_calculate(models.TransientModel):
     date_time = fields.Date('Date:')
     roll_no = fields.Integer('Roll No:')
 
+
+
     @api.multi
     @api.onchange('date_time')
     def change_date(self):
@@ -95,6 +124,11 @@ class wizard_class_fees_calculate(models.TransientModel):
             mon_name = calendar.month_name[m_num]
             self.month_name = mon_name
 
+    @api.multi
+    def custom_function(self):
+        x = 10
+        print "CUSTOM PRIMNTING===================="
+        return x
 
     @api.multi
     def pass_all_values(self):
@@ -131,12 +165,10 @@ class wizard_total_calculation(models.TransientModel):
     act=fields.Integer("id")
     my_month = fields.Char("Month")
 
-
     @api.multi
     def o2m_calculate(self):
         print "ACT============================================",self.act
         self.env['wizard.total.calculate.o2m'].create({"sidd_challenge_2":self.act,"paid_fees":self.paid_fees,"amount_due":self.amount_due,"month_name":self.my_month})
-
 
         # record = self.env['wizard.total.calculate.o2m'].search([('sidd_challenge_2','=',self.act)])
         # record.create({"sidd_challenge_2":self.act,"paid_fees":self.paid_fees,"amount_due":self.amount_due})
@@ -148,9 +180,6 @@ class wizard_total_calculation(models.TransientModel):
         # for each in rec_found:
         #     print "RECORD EACH=============================================",each.id
 
-
-
-
 class wizard_total_calculation_o2m(models.Model):
     _name = 'wizard.total.calculate.o2m'
 
@@ -160,9 +189,18 @@ class wizard_total_calculation_o2m(models.Model):
     month_name = fields.Char('Month Name:')
 
 
-
-
-
+# class res_partner_inherit(models.Model):
+#     _inherit = 'res.partner'
+#
+#     @api.multi
+#     def name_get(self):
+#         result = []
+#         for each in self:
+#             print "EACH===============",each
+#             name = str(each.name) + ' ' + ',' +' '+ str(each.function)
+#             print "APPEND===================",name
+#             result.append((each.id, name))
+#         return result
 
 
 

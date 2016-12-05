@@ -28,7 +28,33 @@
                 report_type="qweb-pdf"
                 menu="True"/>
 
+        <report id="report_student_form"
+                model="student.student"
+                string="Download PDF"
+                name="import_data.student_report_download"
+                file="import_data.student_report_download"
+                report_type="qweb-pdf"
+                menu="True"/>
 
+
+        <!--<report id="sale_order_line_xlsx"-->
+                <!--model="sale.order.line"-->
+                <!--string="Print To XLSX"-->
+                <!--report_type="xlsx"-->
+                <!--name="sale.order.line.xlsx"-->
+                <!--file="sale.order.line.xlsx"-->
+                <!--attachment_use="False"-->
+        <!--/>-->
+
+        <!--<report-->
+    <!--id="partner_xlsx"-->
+    <!--model="sale.order.line"-->
+    <!--string="Print to XLSX"-->
+    <!--report_type="xlsx"-->
+    <!--name="res.partner.xlsx"-->
+    <!--file="res.partner.xlsx"-->
+    <!--attachment_use="False"-->
+<!--/>-->
 
 
     </data>

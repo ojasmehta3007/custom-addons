@@ -69,6 +69,9 @@
                                             <field name="month_name"/>
                                         </group>
                                         </sheet>
+                                        <footer>
+                                             <button string="Cancel" class="btn-default" special="cancel" />
+                                        </footer>
                                    </form>
                                 </field>
                             </record>
@@ -116,6 +119,10 @@
                                 <field name="date_time"/>
                                 <field name="roll_no"/>
                             </group>
+                                <footer>
+                                    <button string="Cancel" class="btn-default" special="cancel" />
+                                    <button string="Create" class="btn-default" special="create" />
+                                </footer>
                             </sheet>
                        </form>
                     </field>

@@ -52,30 +52,30 @@ class res_users(models.Model):
             raise except_orm(_("Values Should be Between 1 to 5 Only!!!"))
         return super(res_users, self).create(fields)
 
-    @api.multi
-    def write(self,vals):
-        print "FIELDS WRITE=============================="
-        var = vals.get('commission_field',0)
-        print "FIELDS WRITE=====================",var
-        if var>=1 and var<=5:
-            pass
-        else:
-            raise except_orm(_("Values Should be Between 1 to 5 Only!!!"))
-
-        print "SELF===============================",self.commission_field
-        print "SELF===============================",self.name
-        print "VALS===============================",vals['commission_field']
-        print "CONTXT========================",self._context.get('params')['id']
-        my_id = self._context.get('params')['id']
-        record_id = self.env['res.users'].browse(my_id)
-        print "record", record_id
-
-        log_message = _('Options changed for %s i.e %s ->> %s' % (self.name, self.commission_field, vals['commission_field']))
-        a = record_id.message_post(body=log_message, type='comment', author_id=record_id.partner_id.id, attachments=[])
-        print "a", a
-        if a:
-            a.write({'res_id': my_id, 'model': 'res.users'})
-        return super(res_users, self).write(vals)
+    # @api.multi
+    # def write(self,vals):
+    #     print "FIELDS WRITE=============================="
+    #     var = vals.get('commission_field',0)
+    #     print "FIELDS WRITE=====================",var
+    #     if var>=1 and var<=5:
+    #         pass
+    #     else:
+    #         raise except_orm(_("Values Should be Between 1 to 5 Only!!!"))
+    #
+    #     print "SELF===============================",self.commission_field
+    #     print "SELF===============================",self.name
+    #     print "VALS===============================",vals['commission_field']
+    #     print "CONTXT========================",self._context.get('params')['id']
+    #     my_id = self._context.get('params')['id']
+    #     record_id = self.env['res.users'].browse(my_id)
+    #     print "record", record_id
+    #
+    #     log_message = _('Options changed for %s i.e %s ->> %s' % (self.name, self.commission_field, vals['commission_field']))
+    #     a = record_id.message_post(body=log_message, type='comment', author_id=record_id.partner_id.id, attachments=[])
+    #     print "a", a
+    #     if a:
+    #         a.write({'res_id': my_id, 'model': 'res.users'})
+    #     return super(res_users, self).write(vals)
 
     # bom_id.message_post(log_message, type='comment', author_id=uid_brw.partner_id.id, attachments=[])
 
@@ -84,14 +84,14 @@ class sale_order_inherit(models.Model):
 
     commission_field = fields.Float('Commission Field:',default='0.00')
 
-    @api.model
-    def create(self,vals):
-        my_id = vals['user_id']
-        record = self.env['res.users'].browse(my_id)
-        value = record.commission_field
-        vals['commission_field'] = value
-        return super(sale_order_inherit, self).create(vals)
-
+    # @api.model
+    # def create(self,vals):
+    #     my_id = vals['user_id']
+    #     record = self.env['res.users'].browse(my_id)
+    #     value = record.commission_field
+    #     vals['commission_field'] = value
+    #     return super(sale_order_inherit, self).create(vals)
+    #
 
 
 

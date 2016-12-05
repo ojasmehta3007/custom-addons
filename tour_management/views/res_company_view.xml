@@ -1,0 +1,53 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<openerp>-->
+    <!--<data>-->
+
+        <!--&lt;!&ndash; ================== Company tree view ==========================  &ndash;&gt;-->
+        <!--<record id="Company_tree_view" model="ir.ui.view">-->
+            <!--<field name="name">Company.tree</field>-->
+            <!--<field name="model">res.company</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<tree string="Company Detail" editable="bottom">-->
+                    <!--<field name="stock1"/>-->
+                    <!--<field name="stock2"/>-->
+                    <!--<field name="stock3"/>-->
+                    <!--<field name="stock4"/>-->
+                <!--</tree>-->
+            <!--</field>-->
+        <!--</record>-->
+
+        <!--&lt;!&ndash; =============== Company form view==================  &ndash;&gt;-->
+        <!--<record id="Company_form_view" model="ir.ui.view">-->
+            <!--<field name="name">Company.form</field>-->
+            <!--<field name="model">res.company</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<form string="Company Detail" editable="bottom">-->
+                    <!--<sheet>-->
+                        <!--<group>-->
+                            <!--<field name="stock_mngt"/>-->
+                        <!--</group>-->
+                        <!--<group  attrs="{'invisible':[('stock_mngt','=',False)]}">-->
+                            <!--<field name="stock1" required="True"/>-->
+                            <!--<field name="stock2" required="True"/>-->
+                            <!--<field name="stock3" required="True"/>-->
+                            <!--<field name="stock4" required="True"/>-->
+                        <!--</group>-->
+                    <!--</sheet>-->
+                <!--</form>-->
+            <!--</field>-->
+        <!--</record>-->
+
+        <!--&lt;!&ndash;  ============ Company Action View ====================  &ndash;&gt;-->
+        <!--<record model="ir.actions.act_window" id="res_company_action">-->
+            <!--<field name="name">Company Details</field>-->
+            <!--<field name="type">ir.actions.act_window</field>-->
+            <!--<field name="res_model">res.company</field>-->
+            <!--<field name="view_type">form</field>-->
+            <!--<field name="view_mode">tree,form</field>-->
+        <!--</record>-->
+
+        <!--<menuitem id="res_comp" parent="main_menu" name="Res Company"/>-->
+        <!--<menuitem id="res_company" parent="res_comp" name="Company" action="res_company_action"/>-->
+
+    <!--</data>-->
+<!--</openerp>-->

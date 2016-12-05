@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_task3_form" model="ir.ui.view">
+                    <field name="name">TASK3</field>
+                    <field name="model">task3</field>
+                    <field name="priority">4</field>
+                    <field name="arch" type="xml">
+                        <form string="Details:">
+                            <sheet>
+                                <group>
+                                    <field name="name"/>
+                                    <field name="roll_no"/>
+                                    <field name="stand"/>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                </record>
+
+        <record id="view_task3_tree" model="ir.ui.view">
+                    <field name="name">TASK3</field>
+                    <field name="model">task3</field>
+                    <field name="priority">4</field>
+                    <field name="arch" type="xml">
+                        <tree string="Details:">
+                            <field name="name"/>
+                            <field name="roll_no"/>
+                        </tree>
+                    </field>
+                </record>
+
+                 <record id="action_tak3" model="ir.actions.act_window">
+                    <field name="name">sale.order.pivot.custom</field>
+                    <field name="type">ir.actions.act_window</field>
+                    <field name="res_model">task3</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">form,tree</field>
+                    <!--<field name="search_view_id" ref="view_student_filter"/>-->
+                </record>
+
+                <menuitem name="Details" id="task3_id" parent="menu_task" action="action_tak3"/>
+
+        <record id="view_demo_class_form" model="ir.ui.view">
+                    <field name="name">DEMO CLASS</field>
+                    <field name="model">demo.class</field>
+                    <field name="priority">4</field>
+                    <field name="arch" type="xml">
+                        <form string="Demo:">
+                            <sheet>
+                                <group>
+                                    <field name="get_details"/>
+                                    <field name="d_name"/>
+                                    <field name="d_roll_no"/>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                </record>
+
+        <record id="view_demo_task" model="ir.ui.view">
+                    <field name="name">Demo Task</field>
+                    <field name="model">demo.class</field>
+                    <field name="priority">4</field>
+                    <field name="arch" type="xml">
+                        <tree string="Demo:">
+                            <field name="get_details"/>
+                             <field name="d_name"/>
+                            <field name="d_roll_no"/>
+                        </tree>
+                    </field>
+                </record>
+
+        <record id="action_demo_class" model="ir.actions.act_window">
+                    <field name="name">demo Class</field>
+                    <field name="type">ir.actions.act_window</field>
+                    <field name="res_model">demo.class</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">form,tree</field>
+                    <!--<field name="search_view_id" ref="view_student_filter"/>-->
+        </record>
+
+        <menuitem id="action_id_demo_task" action="action_demo_class" name="Replica Of Task" parent="menu_task" />
+
+
+    </data>
+    </openerp>

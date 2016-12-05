@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- ================== tour tree view ==========================  -->
+        <record id="tour_tree_view" model="ir.ui.view">
+            <field name="name">tour.tree</field>
+            <field name="model">product.template</field>
+            <field name="arch" type="xml">
+                <tree string="Tour Form">
+                    <field name="name"/>
+                    <field name="tour_type"/>
+                    <field name="type"/>
+                    <field name="no_of_nights"/>
+                    <field name="start_date"/>
+                    <field name="public_categ_ids" />
+                    <field name="website_published"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- =============== tour form view==================  -->
+        <record id="tour_form_view" model="ir.ui.view">
+            <field name="name">tour.form</field>
+            <field name="model">product.template</field>
+            <field name="arch" type="xml">
+                <form string="Tour Form">
+                    <sheet>
+                        <field name="image_medium" widget="image" nolabel="1" class="oe_left oe_avatar"/>
+                        <div class="oe_title oe_left">
+                            <h1>
+                                <field name="name" default_focus="1" placeholder="Tour Name" nolabel="1"/>
+                            </h1>
+                            <div class="oe_edit_only">
+                                (
+                                <field name="active" class="oe_inline"/>
+                                <label for="active" string="Active"/>)
+                            </div>
+                        </div>
+                        <group colspan="4" col="4">
+                            <field name="type" default="Service"/>
+                            <field name="start_date"/>
+                            <field name="tour_type"/>
+                            <field name="tour_code"/>
+                            <field name="no_of_nights"/>
+                        </group>
+                        <notebook>
+                            <page string="Hotel">
+                                <group>
+                                    <field name="hotel" nolabel="1" editable="bottom"/>
+                                </group>
+                            </page>
+                            <page string="Package Itenary">
+                                <group col="1">
+                                    <field name="note"/>
+                                    <field name="itenary" nolabel="1" editable="bottom"/>
+                                </group>
+                            </page>
+                            <page string="Sales">
+                                <group>
+                                    <field name="warranty"/>
+                                    <!--<field name="sale_delay"/>-->
+                                    <field name="public_categ_ids" widget="many2many_tags"/>
+                                    <field name="website_published" widget="website_button"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--  ============ tour Action View ====================  -->
+        <record model="ir.actions.act_window" id="tour_detail_action">
+            <field name="name">Tour Package Information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.template</field>
+            <field name="view_id" ref="tour_form_view"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="tour_detail" parent="main_menu" name="Tour Details" sequence="2"/>
+        <menuitem id="tour_package_info" parent="tour_detail" name="Tour Package Information" action="tour_detail_action"/>
+
+    </data>
+</openerp>

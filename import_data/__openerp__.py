@@ -24,7 +24,6 @@
     'author' : 'OpenERP SA',
     'category' : 'General',
     'description' : """
-
     """,
     'depends' : ['base','report','mail','sale'],
     'data': [
@@ -32,12 +31,15 @@
         'view/binary_view_data.xml',
         'view/task_view.xml',
         'view/task2_view_file.xml',
+        'view/task3_view.xml',
+        'view/task4_view.xml',
+        'view/task5_view.xml',
+        # 'view/task6_view.xml',
+        'view/task7_view.xml',
         'report/reports.xml',
         'report/commission_template.xml',
-        'report/employee_report.xml',
-        'report/employee_report_new.xml',
+        'report/student_report_download.xml',
     ],
-
     'installable': True,
     'auto_install': False,
 }

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- ================== tour tree view ==========================  -->
+        <record id="tour_query_tree_view" model="ir.ui.view">
+            <field name="name">tour.query.tree.view</field>
+            <field name="model">tour.query.detail</field>
+            <field name="arch" type="xml">
+                <tree string="Tour Tree View">
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="phone"/>
+                    <field name="tour"/>
+                    <field name="date"/>
+                    <field name="vendor"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- ================== tour form view ==========================  -->
+        <record id="tour_query_form_view" model="ir.ui.view">
+            <field name="name">tour.query.form.view</field>
+            <field name="model">tour.query.detail</field>
+            <field name="arch" type="xml">
+                <form string="Tour Form View">
+                    <sheet>
+                        <group>
+                            <h1>
+                                <field name="sequence" nolabel="1"/>
+                            </h1>
+                        </group>
+                        <group>
+                            <h1>
+                                <field name="name" placeholder="Partner Name"/>
+                            </h1>
+                        </group>
+                        <group colspan="4" col="4">
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="tour"/>
+                            <field name="date"/>
+                            <field name="ticket"/>
+                        </group>
+                        <notebook>
+                            <page string="Member Details">
+                                <group colspan="4" col="4">
+                                    <field name="adult_no"/>
+                                    <field name="adult" attrs="{'invisible':[('adult_no','=',0)]}"/>
+                                    <field name="extra_adult_no"/>
+                                    <field name="extra_adult" attrs="{'invisible':[('extra_adult_no','=',0)]}"/>
+                                    <field name="child_w_bed_no"/>
+                                    <field name="child_w_bed" attrs="{'invisible':[('child_w_bed_no','=',0)]}"/>
+                                    <field name="child_w_nobed_no"/>
+                                    <field name="child_w_nobed" attrs="{'invisible':[('child_w_nobed_no','=',0)]}"/>
+                                    <field name="infant_no"/>
+                                    <field name="infant" attrs="{'invisible':[('infant_no','=',0)]}"/>
+                                    <field name="no_seats"/>
+                                </group>
+                            </page>
+                            <!--<page string="Member Names">-->
+                                <!--<group>-->
+                                    <!--<field name="passenger" nolabel="1"/>-->
+                                <!--</group>-->
+                            <!--</page>-->
+
+                            <!--<page string="Vehicle Details">-->
+                                <!--<group>-->
+                                    <!--<field name="from_date"/>-->
+                                    <!--<field name="to_date"/>-->
+                                    <!--<field name="vehicle_detail"/>-->
+                                <!--</group>-->
+                            <!--</page>-->
+
+                            <page string="Vendor Details" attrs="{'invisible':[('ticket','=',False)]}">
+                                <group colspan="4" col="4">
+                                    <field name="vendor"/>
+                                    <field name="email1"/>
+                                    <field name="phone1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!--  ============ tour Action View ====================  -->
+        <record model="ir.actions.act_window" id="tour_query_detail_action_id">
+            <field name="name">Tour Query Information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tour.query.detail</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="main_menu" name="Tour Management"/>
+        <menuitem id="send_query" parent="main_menu" name="Send Query" sequence="1"/>
+        <menuitem id="tour_query_menu" parent="send_query" name="Tour Query" action="tour_query_detail_action_id"/>
+        <menuitem id="master_config" parent="main_menu" name="Master Config" sequence="3"/>
+
+    </data>
+</openerp>
+
+

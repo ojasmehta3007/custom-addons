@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="menu_tour_detail" model="website.menu">
+            <field name="name">Tours</field>
+            <field name="url">/tour</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <!--<field name="sequence" type="int">100</field>-->
+        </record>
+
+        <record id="menu_tour_login" model="website.menu">
+            <field name="name">Log in</field>
+            <field name="url">/tour_login</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <!--<field name="sequence" type="int">100</field>-->
+        </record>
+    </data>
+</openerp>

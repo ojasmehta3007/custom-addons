@@ -118,7 +118,7 @@ class student(models.Model):
 
     @api.multi
     def unlink(self):
-        if  self.active == 1:
+        if self.active == 1:
             raise except_orm(_("Warning"))
         else:
             pass
@@ -128,7 +128,7 @@ class student(models.Model):
     @api.onchange('birthdate')
     @api.depends('pincode')
     def mycustom(self):
-        print "Inside depends"
+        print "Inside depends===================="
         a = self.birthdate
         print "vals====================",a
         curr_birth_date = datetime.strptime(str(self.birthdate),"%Y-%m-%d")

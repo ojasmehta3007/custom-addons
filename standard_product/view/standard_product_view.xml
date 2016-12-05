@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="sale_order_line_standard_product" model="ir.ui.view">
+            <field name="name">Standard Product</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="models_name"/>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/tree" position="attributes">
+                    <attribute name="create">false</attribute>
+                    <attribute name="decoration-info">my_bool==False</attribute>
+                </xpath>
+
+                <xpath expr="//header/button[@name='action_done']" position="after">
+                    <button name="apply_standard" string="APPLY" type="object"/>
+                </xpath>
+
+                <xpath expr="//tree/field[@name='product_id']" position="before">
+                    <field name="sequence_no" attrs="{'invisible':[('my_bool','=',True)]}"/>
+                </xpath>
+
+
+                <xpath expr="//tree/field[@name='product_id']" position="before">
+                    <field name="my_bool" invisible="1"/>
+                </xpath>
+
+
+
+
+            </field>
+        </record>
+
+        <record id="mrp_standard_product" model="ir.ui.view">
+            <field name="name">MRP</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='product_qty']" position="after">
+                    <field name="standard"/>
+                </xpath>
+            </field>
+        </record>
+
+        </data>
+    </openerp>

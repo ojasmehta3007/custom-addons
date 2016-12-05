@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- ================== customer tree view ==========================  -->
+        <record id="customer_detail_tree" model="ir.ui.view">
+            <field name="name">customer.detail.tree</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <tree string="Customer">
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="user_id"/>
+                    <field name="gender"/>
+                    <field name="phone"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- =============== customer form view==================  -->
+        <record id="customer_detail_form" model="ir.ui.view">
+            <field name="name">customer.detail.form</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <form string="Customer">
+                    <sheet>
+                        <field name="image" widget="image" nolabel="1" class="oe_left oe_avatar"/>
+                        <div class="oe_title oe_left">
+                            <h1>
+                                <field name="name" default_focus="1" placeholder="Customer Name" nolabel="1"/>
+                            </h1>
+                            <div class="oe_edit_only">
+                                (
+                                <field name="is_member" class="oe_inline"/>
+                                <label for="is_member" string="is a Member"/>)
+                            </div>
+                        </div>
+                        <group colsapn="4" col="4">
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="gender"/>
+                            <field name="user_id" attrs="{'invisible':[('is_member','=',False)]}"/>
+                            <field name="password" attrs="{'invisible':[('is_member','=',False)]}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--  ============ customer Action View ====================  -->
+        <record model="ir.actions.act_window" id="customer_detail_action">
+            <field name="name">Customer Details</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_id" ref="customer_detail_form"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="customer_package_info" parent="master_config" name="Customer Detail" action="customer_detail_action"/>
+
+    </data>
+</openerp>

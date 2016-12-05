@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- ================== passenger tree view ==========================  -->
+        <record id="passenger_tree_view" model="ir.ui.view">
+            <field name="name">passenger.tree</field>
+            <field name="model">passenger.detail.info</field>
+            <field name="arch" type="xml">
+                <tree string="City Detail" editable="bottom">
+                    <field name="name"/>
+                    <!--<field name="seat_no"/>-->
+                    <field name="age"/>
+                    <field name="gen"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- =============== passenger form view==================  -->
+        <record id="passenger_form_view" model="ir.ui.view">
+            <field name="name">passenger.form</field>
+            <field name="model">passenger.detail.info</field>
+            <field name="arch" type="xml">
+                <form string="City Detail" editable="bottom">
+                    <sheet>
+                        <h1><u>passenger Details</u></h1>
+                        <group colspan="4" col="4">
+                            <field name="name"/>
+                            <!--<field name="seat_no"/>-->
+                            <field name="age"/>
+                            <field name="gen"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--  ============ passenger Action View ====================  -->
+        <record model="ir.actions.act_window" id="passenger_detail_action">
+            <field name="name">passenger Details</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">passenger.detail.info</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="passenger_view__detail" parent="master_config" name="Passenger Detail" action="passenger_detail_action"/>
+
+    </data>
+</openerp>

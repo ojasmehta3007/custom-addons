@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- ================== Meal tree view ==========================  -->
+        <record id="Master Config meal_tree_view" model="ir.ui.view">
+            <field name="name">Master Config meal.tree</field>
+            <field name="model">meal.detail</field>
+            <field name="arch" type="xml">
+                <tree string="Master Config meal Detail" editable="bottom">
+                    <field name="meal"/>
+                    <field name="rate"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- =============== Master Config meal form view==================  -->
+        <record id="Master Config meal_form_view" model="ir.ui.view">
+            <field name="name">Master Config meal.form</field>
+            <field name="model">meal.detail</field>
+            <field name="arch" type="xml">
+                <form string="Master Config meal Detail" editable="bottom">
+                    <sheet>
+                        <group>
+                            <field name="meal"/>
+                            <field name="rate"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--  ============ Master Config meal Action View ====================  -->
+        <record model="ir.actions.act_window" id="meal_detail_action">
+            <field name="name">Meal Configuration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">meal.detail</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="meal_plan" parent="master_config" name="Meal Config" action="meal_detail_action"/>
+
+    </data>
+</openerp>

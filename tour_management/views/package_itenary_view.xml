@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- ================== Tour tree view ==========================  -->
+        <record id="Master Config_tree_view" model="ir.ui.view">
+            <field name="name">Master Config.tree</field>
+            <field name="model">package.itenary</field>
+            <field name="arch" type="xml">
+                <tree string="Master Config Detail" editable="bottom">
+                    <field name="day"/>
+                    <field name="itenary"/>
+                    <field name="night_hold"/>
+                    <field name="hotel_detail"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- =============== Master Config form view==================  -->
+        <record id="Master Config_form_view" model="ir.ui.view">
+            <field name="name">Master Config.form</field>
+            <field name="model">package.itenary</field>
+            <field name="arch" type="xml">
+                <form string="Master Config Detail" editable="bottom">
+                    <sheet>
+                        <group>
+                            <field name="day"/>
+                            <field name="itenary"/>
+                            <field name="night_hold"/>
+                            <field name="hotel_detail"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--  ============ Master Config Action View ====================  -->
+        <record model="ir.actions.act_window" id="itenary_detail_action">
+            <field name="name">Package Itenary Details</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">package.itenary</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="itenary_detail" parent="master_config" name="Itenary Detail" action="itenary_detail_action"/>
+
+    </data>
+</openerp>

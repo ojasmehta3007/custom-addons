@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--==============================wizard task=========================-->
+        <record id="sale_order_wizard_form" model="ir.ui.view">
+                    <field name="name">sale.order.custom.inherit</field>
+                    <field name="model">sale.order.custom.inherit</field>
+                    <field name="arch" type="xml">
+                        <form string="SaleOrder">
+                            <sheet>
+                                <button name="Confirm_sale" string="Confirm Sale Orders" type="object" />
+                            <group>
+                                <field name="local"/>
+                            </group>
+                            </sheet>
+                       </form>
+                    </field>
+                </record>
+
+                <record id="sale_order_wizard_action" model="ir.actions.act_window">
+                    <field name="name">QUO TO SO</field>
+                    <field name="type">ir.actions.act_window</field>
+                    <field name="res_model">sale.order.custom.inherit</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">form</field>
+                    <field name="view_id" ref="sale_order_wizard_form"/>
+                    <field name="target">new</field>
+                    <field name="multi">True</field>
+                </record>
+
+        <record model="ir.values" id="sale_order_inherit">
+            <field name="model_id" ref="model_sale_order_custom_inherit"/>
+            <field name="name">QUO TO SO</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('sale_order_wizard_action'))" />
+            <field name="key">action</field>
+            <field name="model">sale.order</field>
+       </record>
+
+                        <!--=====================wizard ends======================-->
+
+        <!--========================sale inherits=========================-->
+        <!--<record id="sale_order_inherit_state_form" model="ir.ui.view">-->
+            <!--<field name="name">Inherit State</field>-->
+            <!--<field name="model">sale.order</field>-->
+            <!--<field name="inherit_id" ref="hr.view_employee_form"/>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<field name="mobile_phone" position="after">-->
+                   <!--<field name="state"/>-->
+                <!--</field>-->
+            <!--</field>-->
+        <!--</record>-->
+
+
+
+
+
+        </data>
+    </openerp>

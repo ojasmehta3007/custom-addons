@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record forcecreate="True" id="google_spreadsheet_scheduler" model="ir.cron">
+            <field name="name">Google Spreadsheet Scheduler</field>
+            <field eval="True" name="active"></field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"></field>
+            <field eval="'res.partner'" name="model"></field>
+            <field eval="'get_data_from_google_spreadsheet_scheduler'" name="function"></field>
+            <field eval="" name="args"></field>
+        </record>
+    </data>
+</openerp>

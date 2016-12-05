@@ -45,24 +45,40 @@ class sale_order_inherit(models.Model):
     my_price_unit = fields.Integer('PRICE UNIT')
     my_price_total = fields.Integer('PRICE TOTAL')
     my_avg_unit_price = fields.Integer('AVERAGE PRICE')
+    default_code = fields.Char('DEFAULT CODE:')
+
+    # def _select(self):
+    #     print "INSIDE SELECT============================="
+    #     select_str = """select distinct product_id as my_name,min(id) as id,
+    #     SUM(product_uom_qty) as my_total_qty,
+    #     SUM(price_unit) as my_price_unit,
+    #     SUM(product_uom_qty * price_unit) as my_price_total,
+    #     (SUM(product_uom_qty * price_unit) / SUM(product_uom_qty)) AS my_avg_unit_price"""
+    #     return select_str
 
     def _select(self):
         print "INSIDE SELECT============================="
-        select_str = """select distinct product_id as my_name,min(id) as id,
-        SUM(product_uom_qty) as my_total_qty,
-        SUM(price_unit) as my_price_unit,
+        select_str = """SELECT distinct sl.product_id as my_name,min(sl.id) as id,
+        SUM(sl.product_uom_qty) as my_total_qty,
+        SUM(sl.price_unit) as my_price_unit,
         SUM(product_uom_qty * price_unit) as my_price_total,
-        (SUM(product_uom_qty * price_unit) / SUM(product_uom_qty)) AS my_avg_unit_price"""
+        SUM(sl.product_uom_qty * sl.price_unit) / SUM(sl.product_uom_qty) AS my_avg_unit_price,
+        pp.default_code as default_code"""
         return select_str
+
 
     def _from(self):
         print "INSIDE FROM=========================="
-        from_str = """sale_order_line"""
+        from_str = """sale_order_line sl LEFT JOIN product_product pp ON sl.product_id = pp.id"""
         return from_str
 
     def _group_by(self):
-        group_by_str = """GROUP BY product_id"""
+        group_by_str = """GROUP BY sl.product_id,pp.default_code ORDER BY sl.product_id DESC"""
         return group_by_str
+
+    # def _order_by(self):
+    #     order_by_str = """"""
+    #     return order_by_str
 
     def init(self, cr):
         print "INSIDE INIT==========================="

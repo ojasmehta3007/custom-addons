@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+       <!-- ================== Tour tree view ==========================  -->
+        <record id="city_tree_view" model="ir.ui.view">
+            <field name="name">city.tree</field>
+            <field name="model">city.detail</field>
+            <field name="arch" type="xml">
+                <tree string="City Detail" editable="bottom">
+                   <field name="country"/>
+                   <field name="state"/>
+                   <field name="name"/>
+	               <field name="city_code"/>
+                </tree>
+            </field>
+	    </record>
+
+        <!-- =============== city form view==================  -->
+        <record id="city_form_view" model="ir.ui.view">
+            <field name="name">city.form</field>
+            <field name="model">city.detail</field>
+            <field name="arch" type="xml">
+                <form string="City Detail" editable="bottom">
+            	<sheet>
+                    <group>
+                       <field name="country"/>
+                       <field name="state"/>
+                       <field name="name"/>
+                       <field name="city_code"/>
+                    </group>
+
+                 </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--  ============ City Action View ====================  -->
+        <record model="ir.actions.act_window" id="city_detail_action">
+            <field name="name">City Details</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">city.detail</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+    	<menuitem id="city_detail" parent="master_config" name="City Detail" action="city_detail_action" sequence="3"/>
+
+    </data>
+</openerp>

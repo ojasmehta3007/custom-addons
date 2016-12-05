@@ -72,6 +72,5 @@ class student(models.Model):
             'target' : 'new',
                     }
 
-
         # print active_id
 

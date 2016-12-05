@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+       <!-- ================== vendor tree view ==========================  -->
+        <record id="vendor_tree_view" model="ir.ui.view">
+            <field name="name">vendor.tree</field>
+            <field name="model">vendor.detail.info</field>
+            <field name="arch" type="xml">
+                <tree string="City Detail" editable="bottom">
+	               <field name="name"/>
+	               <field name="email"/>
+                   <field name="phone"/>
+	               <field name="location"/>
+                </tree>
+            </field>
+	    </record>
+
+        <!-- =============== vendor form view==================  -->
+        <record id="vendor_form_view" model="ir.ui.view">
+            <field name="name">vendor.form</field>
+            <field name="model">vendor.detail.info</field>
+            <field name="arch" type="xml">
+                <form string="City Detail" editable="bottom">
+            	<sheet>
+                     <h1><u>Vendor Details</u></h1>
+                        <group colspan="4" col="4">
+                           <field name="name"/>
+                           <field name="email"/>
+                           <field name="phone"/>
+                           <field name="location"/>
+                        </group>
+
+                 </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--  ============ vendor Action View ====================  -->
+        <record model="ir.actions.act_window" id="vendor_detail_action">
+            <field name="name">vendor Details</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vendor.detail.info</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+    	<menuitem id="vendor_view__detail" parent="master_config" name="Vendor Detail" action="vendor_detail_action"/>
+
+    </data>
+</openerp>

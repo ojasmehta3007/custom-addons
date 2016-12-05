@@ -9,13 +9,19 @@ class calculate(models.TransientModel):
 
 	@api.multi
 	def calculate(self):
+		print "INSIDE CALCULATE================="
+		print "SELF=================",self
+		print "SELF CONTEXT=================",self._context
 		temp=0
 		if self.select == "addition":
 			temp=self.num1+self.num2
 		else:
 			temp=self.num1-self.num2
 		context=dict(self._context)
-		context.update({'default_result':temp})
+		print "CONTEXT ONLY=====================",context
+
+		my = context.update({'default_result':temp})
+		print "UPDATED CONTEXT========================",my
 
 		return{
 			'name': _('Calculate'),

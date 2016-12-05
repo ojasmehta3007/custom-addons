@@ -1,0 +1,88 @@
+.myNavbar, navbar-header, container-fluid
+{
+    border-radius: 0px;
+    margin:0 auto;
+}
+
+#banner
+{
+    padding: 0px;
+}
+
+.navbar {
+    margin-bottom: 0px;
+    border-radius: 0px;
+}
+
+.navbar-inverse {
+    border-radius: 0px;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img
+{
+    width: 100%;
+    margin:auto;
+    max-height:600px;
+}
+
+#tour_detail
+{
+    margin-top:10px;
+}
+
+.panel-body
+{
+    padding:0px;
+    margin:0px;
+}
+
+.btn
+{
+    width:100%;
+}
+
+#search_bar
+{
+    margin:10px auto;
+}
+
+.grow img {
+  height: 300px;
+  width: 300px;
+
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+
+.grow img:hover {
+  width: 400px;
+  height: 400px;
+}
+
+.frame
+{
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+}
+
+.zoomin1 img
+{
+    height: 200px;
+    width: 200px;
+    -webkit-transition: all 2s ease;
+    -moz-transition: all 2s ease;
+    -ms-transition: all 2s ease;
+    transition: all 2s ease;
+}
+
+.zoomin1 img:hover
+{
+    width: 250px;
+    height: 250px;
+}
+

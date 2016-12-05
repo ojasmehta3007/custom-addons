@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- ================== hotel facility tree view ==========================  -->
+        <record id="Master Config hotel facility_tree_view" model="ir.ui.view">
+            <field name="name">Master.Config.hotel.facility.tree</field>
+            <field name="model">hotel.facility</field>
+            <field name="arch" type="xml">
+                <tree string="Master Config hotel facility Detail" editable="bottom">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- =============== Master Config hotel facility form view==================  -->
+        <record id="Master Config hotel facility_form_view" model="ir.ui.view">
+            <field name="name">Master.Config.hotel.facility.form</field>
+            <field name="model">hotel.facility</field>
+            <field name="arch" type="xml">
+                <form string="Master Config hotel facility Detail" editable="bottom">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--  ============ Master Config hotel facility Action View ====================  -->
+        <record model="ir.actions.act_window" id="hotel_facility_detail_action">
+            <field name="name">Hotel Facility Configuration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hotel.facility</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="hotel_facility_plan" parent="master_config" name="Hotel facility" action="hotel_facility_detail_action"/>
+
+    </data>
+</openerp>

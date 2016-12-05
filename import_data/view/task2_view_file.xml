@@ -11,11 +11,12 @@
                 <!--<form string="Button">-->
                 <!--</form>-->
                 <pivot string="Graph View PIVOT">
-                    <field name="my_name" type="row"/>
+                    <field name="my_name" type="measure"/>
                     <field name="my_total_qty" type="row"/>
                     <field name="my_price_unit" type="row"/>
                     <field name="my_price_total" type="row"/>
                     <field name="my_avg_unit_price" type="row"/>
+                    <field name="default_code" type="measure"/>
                 </pivot>
             </field>
         </record>
@@ -44,6 +45,7 @@
                     <field name="my_price_unit" type="row"/>
                     <field name="my_price_total" type="row"/>
                     <field name="my_avg_unit_price" type="row"/>
+                    <field name="default_code" type="row"/>
                         </group>
                     </sheet>
                 </form>
